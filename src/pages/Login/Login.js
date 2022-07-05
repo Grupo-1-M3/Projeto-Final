@@ -44,7 +44,7 @@ if(auth) {
 }
 
 const handleLogin = async (data) => {
-  const response = await api.post("login", data).catch((err) => { 
+  const response = await api.post("/login", data).catch((err) => { 
     console.log(err);  
     toast.error("Ops! algo não está certo");
   });
