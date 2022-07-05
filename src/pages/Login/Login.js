@@ -1,6 +1,17 @@
 import { Container, Form, ContainerMessage } from "./style";
 
+import { toast } from "react-toastify"
+
+import { useHistory } from "react-router-dom";
+import{ useForm } from "react-hook-form";
+import { Redirect } from "react-router-dom";
+import * as yup from "yup";
+import { yupResolver } from "@hookform/resolvers/yup";
+
+import { api } from "../../services/api"
+
 const Login = () => {
+  
 
   return (
     <Container>
