@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-  height: 100vh;
+  min-height: 100vh;
 
   display: flex;
   align-items: center;
@@ -17,7 +17,7 @@ export const Form = styled.form`
 
   width: 301px;
   min-height: 604px;
-
+  margin-bottom: 18px;
   padding: 38px 18px 24px 18px;
   gap: 10px;
 
