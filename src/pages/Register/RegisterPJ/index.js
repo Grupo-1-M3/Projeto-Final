@@ -24,8 +24,16 @@ const RegisterPJ = ({ authenticated }) => {
   const handleNavigation = () => {
     return history.push("/login");
   };
-  const onSubmitFunction = ({ name, email, password, CNPJ, category }) => {
-    const user = { name, email, password, CNPJ, category };
+  const onSubmitFunction = ({
+    name,
+    email,
+    password,
+    CNPJ,
+    category,
+    phone,
+    address,
+  }) => {
+    const user = { name, email, password, CNPJ, category, phone, address };
     api
       .post("/register", user)
       .then((_) => {
@@ -59,6 +67,20 @@ const RegisterPJ = ({ authenticated }) => {
           name="cnpj"
           register={register}
           error={errors.cnpj?.message}
+        />
+        <Input
+          label="Contato"
+          placeholder="Digite aqui seu telefone para contao"
+          name="phone"
+          register={register}
+          error={errors.phone?.message}
+        />
+        <Input
+          label="Endereço"
+          placeholder="Digite aqui o endereço da sua empresa"
+          name="address"
+          register={register}
+          error={errors.address?.message}
         />
         <SelectContent
           label="Categoria"

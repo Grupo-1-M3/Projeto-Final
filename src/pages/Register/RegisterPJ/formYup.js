@@ -22,8 +22,10 @@ const formSchema = yup.object().shape({
     .string()
     .required("Campo obrigatório!")
     .oneOf([yup.ref("password"), null], "Senhas não conferem"),
-  cnpj: yup.number().required("Campo obrigatório!"),
+  cnpj: yup.string().required("Campo obrigatório!"),
   category: yup.string().required("Campo obrigatório!"),
+  phone: yup.string().required("Campo Obrigatório"),
+  address: yup.string().required("Campo Obrigatório"),
 });
 
 export default formSchema;
