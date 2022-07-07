@@ -3,7 +3,6 @@
     height: 100vh;
     max-height: max-content;
     margin: 0 auto;
-    max-width: 300px;
  
     padding: 0.5rem;
     display:flex;
@@ -17,14 +16,17 @@
     font-family: "Inter", sans-serif;
 
     box-sizing: border-box;
+
+    background-image: linear-gradient(to top left ,var(--color-light-green), var(--color-medium-green), var(--color-dark-green));
 }
 
 .body{
     min-height: 580px;
     height: max-content;
-    max-width: 375px;
+    max-width: 300px;
 
     border-radius: 10px;
+    box-shadow: 0 0 10px 1px var(--color-dark-green);
 
     background: var(--color-medium-green);
 }
@@ -64,6 +66,10 @@ button{
     width: 95%;
     height: 30px;
     color: #000;
+}
+
+button:hover{
+    box-shadow: 0 0 10px 2px grey;
 }
 
 label{
