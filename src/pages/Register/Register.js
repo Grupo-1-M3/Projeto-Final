@@ -1,10 +1,9 @@
 import React from "react";
+import RegisterPF from "../../components/RegisterPF";
 
 const Register = () => {
   return (
-    <div>
-      <h1>Register page</h1>
-    </div>
+      <RegisterPF/>
   );
 };
 
