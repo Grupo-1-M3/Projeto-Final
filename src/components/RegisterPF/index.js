@@ -2,45 +2,15 @@
 import "./styles.css";
 
 import { useForm } from "react-hook-form";
-import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
+import formSchema from "./formYup"
+import Button from "../Button"
+import { useHistory , Redirect} from "react-router-dom";
+import { api } from "../../services/api";
+import { toast } from "react-toastify";
 
-
-const RegisterPF = () => {
-  const formSchema = yup.object().shape({
-    name: yup
-      .string()
-      .required("Nome obrigatório")
-      .matches("^[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ ]+$", "Apenas letras!"),
-    surname: yup
-      .string()
-      .required("Sobrenome obrigatório")
-      .matches("^[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ ]+$", "Apenas letras!"),
-    cpf: yup
-      .string()
-      .required("CPF obrigatório")
-      .matches("[0-9]{11}", "CPF inválido"),
-    birthDate: yup
-      .string()
-      .required("Informe data de nascimento")
-      .matches("[0-9]{2}[\/][0-9]{2}[\/][0-9]{4}", "formato inválido ex: 01/01/1990"),
-    phone: yup
-      .string().required("Contato obrigatório"),
-    email: yup
-      .string()
-      .required("Email obrigatório")
-      .email("Email inválido"),
-    password: yup
-      .string()
-      .required("Senha obrigatória")
-      // eslint-disable-next-line no-useless-escape
-      .matches("^(?=.{6,})", "Min. 6 caracteres"),
-    confirmPassword: yup
-      .string()
-      .required("Confimação de senha obrigatória")
-      .oneOf([yup.ref("password")], "Senha não é identica")    
-  });
-
+const RegisterPF = ({authenticated}) => {
+  
   const {
     register,
     handleSubmit,
@@ -49,24 +19,48 @@ const RegisterPF = () => {
     resolver: yupResolver(formSchema),
   });
 
+  const history = useHistory();
+
+  const handleNavigation = () => {
+    return history.push("/login");
+  };
+
+  const onSubmitFunction = ({
+    email,
+    password,
+    name,
+    cpf,
+    birth_date,
+    phone,
+  }) => {
+    const user = { email, password, name, cpf, birth_date, phone};
+    api
+      .post("/register", user)
+      .then((_) => {
+        toast.success("Parabéns, conta criada com sucesso!");
+        return history.push("/login");
+      })
+      .catch((_) => toast.error("Erro ao criar a conta, e-mail já cadastrado"));
+  };
+  if (authenticated) {
+    return <Redirect to="/dashboard" />;
+  }
   return (
       <div className="container">
+        <Button onClick={handleNavigation}>Voltar</Button>
         <div className="container body">
           <h1>TrashNoFood</h1>
           <p>Crie sua conta</p>
-          <form className="formRegisterPF" onSubmit={handleSubmit()}>
+          <form className="formRegisterPF" onSubmit={handleSubmit(onSubmitFunction)}>
 
             {errors.name && <label>{errors.name.message}</label>}
             <input placeholder="Nome" {...register("name")} />
-            
-            {errors.surname && <label>{errors.surname.message}</label>}
-            <input placeholder="Sobrenome" {...register("surname")} />
-            
+                      
             {errors.cpf && <label>{errors.cpf.message}</label>}
             <input placeholder="CPF" {...register("cpf")} />
             
-            {errors.birthDate && <label>{errors.birthDate.message}</label>}
-            <input placeholder="Data de Nascimento" {...register("birthDate")} />
+            {errors.birth_date && <label>{errors.birth_date.message}</label>}
+            <input placeholder="Data de Nascimento" {...register("birth_date")} />
 
             {errors.phone && <label>{errors.phone.message}</label>}
             <input placeholder="Telefone" {...register("phone")} />
