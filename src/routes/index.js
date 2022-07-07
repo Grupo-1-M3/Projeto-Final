@@ -1,7 +1,7 @@
 import React from "react";
 import { Switch, Route } from "react-router-dom";
 import DashBoard from "../pages/DashBoard/DashBoard";
-import Home from "../pages/Home/Home";
+import Home from "../pages/Home";
 import Login from "../pages/Login/Login";
 import Register from "../pages/Register/Register";
 import Cart from "../pages/Cart/Cart";
