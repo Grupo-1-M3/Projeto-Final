@@ -4,15 +4,16 @@ import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { BrowserRouter } from "react-router-dom";
+import "swiper/css/bundle";
 import Providers from "./contexts/index";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
-  <BrowserRouter>
-    <Providers>
+  <Providers>
+    <BrowserRouter>
       <App />
-    </Providers>
-  </BrowserRouter>
+    </BrowserRouter>
+  </Providers>
 );
 
 // If you want to start measuring performance in your app, pass a function
