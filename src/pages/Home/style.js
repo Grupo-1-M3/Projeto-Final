@@ -8,15 +8,23 @@ export const HeaderStyled = styled.header`
     justify-content: center;
     align-items: center;
     padding: 0 20px;
-
     
     background: linear-gradient(var(--background-header-home), var(--background-home));
+
+    img {
+        width: 120px;
+    }
 `
 
 export const Container = styled.div`
 
     padding: 50px 0;
     background: var(--background-home);
+
+    width: 100%;
+    max-width: 1340px;
+
+    margin: 0 auto;
 
     color: var(--white);
     
@@ -43,7 +51,7 @@ export const Container = styled.div`
     .product {
         
         background: var(--background-header-home);
-        width: 372px;
+        width: 350px;
         height: 260px;
         border-radius: 5px;
         font-size: 13px;
@@ -58,7 +66,12 @@ export const Container = styled.div`
         }
 
         & > span {
-        
+            font-size: 11px;
+            float: right;
+            padding: 5px;
+            background: var(--color-box-shadow);
+            margin-top: -4px;
+            border-bottom-left-radius: 5px;
         }
 
         & > div {
@@ -67,6 +80,13 @@ export const Container = styled.div`
 
             p {
                 padding: 15px 0;
+            }
+        }
+
+        @media screen and (max-width: 320px) {
+
+            & > div p {
+                font-size: 11px;
             }
         }
 
@@ -150,6 +170,11 @@ export const Content = styled.div`
             border-color: var(--color-button-home-hover);
             transition: .5s;
         }
+
+        @media screen and (max-width: 300px) {
+            
+            font-size: 11px;
+        }
     }
 
     @media screen and (max-width: 650px) {
@@ -169,14 +194,18 @@ export const Content = styled.div`
         }
     }
 
-    @media screen and (max-width: 375px) {
+    @media screen and (max-width: 425px) {
 
         div > h1 {
-            font-size: 40px;
+            font-size: 28px;
         }
 
         div > p {
-            font-size: 15px;
+            font-size: 13px;
+        }
+
+        div div {
+            padding-top: 0;
         }
     }
 
@@ -189,14 +218,6 @@ export const Content = styled.div`
 
         div div > button {
             margin: 10px;
-        }
-    }
-
-    @media screen and (max-width: 315px) {
-
-        div {
-            padding-left: 0;
-            padding-right: 0;
         }
     }
 `
@@ -214,13 +235,17 @@ export const FooterStyled = styled.footer`
         justify-content: space-around;
         align-items: center;
     }
+
+    .telephone {
+        letter-spacing: 1.5px;
+    }
     
     & > p {
         font-size: 13px;
     }
 
     h2 {
-        font-size: 56px;
+        font-size: 48px;
         line-height: 1.2em;
         font-weight: normal;
         width: 100%;
@@ -259,7 +284,7 @@ export const FooterStyled = styled.footer`
         }
 
         h2 {
-            font-size: 38px;
+            font-size: 28px;
         }
     }
 `

@@ -1,6 +1,6 @@
-import React from "react"
+import React, { useState } from "react"
 import { HeaderStyled, Container, Content, FooterStyled } from "./style"
-import Logo from "../../assets/Nossa Logo.png"
+import Logo from "../../assets/logo.png"
 
 import Principal from "../../assets/foto_principal.png"
 import Ifood from "../../assets/ifood.png"
@@ -18,15 +18,20 @@ import "swiper/css"
 import "swiper/css/pagination"
 import { Pagination, Autoplay } from "swiper"
 import { useHistory } from "react-router-dom"
+import { api } from "../../services/api"
 
 
 const Home = () => {
 
   const history = useHistory()
 
+  const [ products, setProducts ] = useState([])
+
   const companys = [ Ifood, Pizza_hut, Hellmanns, Burger_king, Habibs, McDonalds ]
 
-  const prices = [ 6, 7, 8, 3, 5, 2 ]
+  api.get("664/top_products")
+    .then(res => setProducts(res.data))
+    .catch(err => console.log(err))
 
   return (
     <>
@@ -64,30 +69,34 @@ const Home = () => {
 
         <div className="content">
 
-            {
-              prices.map(price => (
-                
-                <div className="product">
-                  <img src="https://panattos.com.br/uploads/produtos/2017/07/pao-frances-fermentacao-curta-massa-congelada.jpg" alt="pão" />
-                  <span>50% desconto</span>
-                  <div>
-                    <h3>Pão</h3>
+          {
+            products.map(product => {
 
-                    <p>Descrição do produto</p>
+              const desconto = product.price - (product.price * 75 / 100)
+
+              return (
+                <div className="product">
+                  <img src={ product.img } alt={ product.name } />
+                  <span>75% OFF</span>
+                  <div>
+                    <h3>{ product.name }</h3>
+
+                    <p>Data de vencimento: { product.validity }</p>
 
                     <div>
-                      <span>R$ { price.toFixed(2) }</span>
-                      <span>R$ <s>{ price / 2 }</s></span>
+                      <span>R$ { desconto.toFixed(2).replace(".", ",") }</span>
+                      <span>R$ <s>{ product.price.toFixed(2).replace(".", ",") }</s></span>
                     </div>
                   </div>
                 </div>
-              ))
-            }    
+              )
+            })
+          }    
             
         </div>
 
         <div className="verMais">
-          <button>Ver mais</button>
+          <button onClick={ () => history.push("/login") }>Ver mais</button>
         </div>
 
         <h2>APOIADORES</h2>
@@ -118,13 +127,13 @@ const Home = () => {
 
       <FooterStyled>
         <div>  
-          <h2>Ajude a combatemos o desperdício.</h2>
+          <h2>Ajude a combater o desperdício.</h2>
           
           <div>
             <h4>Contatos</h4>
 
-            <p>+55 11 9999-9999</p>
-            <p>contato@example.org</p>
+            <p className="telephone">+55 11 9532-4335</p>
+            <p>contato@trashnofood.com</p>
 
             <h4>Nossas Redes</h4>
 
@@ -136,7 +145,7 @@ const Home = () => {
           </div>
         </div>
 
-        <p>© 2022 Evlos4U - Todos os direitos reservados.</p>
+        <p>© 2022 TrashNoFood - Todos os direitos reservados.</p>
       </FooterStyled>
     </>
   )
