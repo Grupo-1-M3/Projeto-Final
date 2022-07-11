@@ -8,141 +8,21 @@ import { api } from "../../services/api";
 import { toast } from "react-toastify";
 
 const RegisterPF = ({ authenticated }) => {
-
-  /* const fieldForm = {
-    name: useInput({
-      name: "name",
-      errorText: {
-        required: "Nome obrigatório"
-      }
-    }),
-    cpf: useInput({
-      name: "cpf",
-      errorText: {
-        required: "CPF obrigatório"
-      }
-    }),
-    birth_date: useInput({
-      name: "birth_date",
-      errorText: { required: "Data de nascimento obrigatória" },  
-      minLength: 10,
-      maxLength: 10,
-      customMask: {
-        expressions: [
-          {
-            regex: /\D/g,
-            replace: "",
-          },
-          {
-            regex: /(\d{2})(\d)/,
-            replace: "$1/$2",
-          },
-          {
-            regex: /(\d{2})(\d{4})/,
-            replace: "$1/$2",
-          },
-        ],
-      },
-      customRule: {
-        callback: (birthDate) => {
-          let dateNow = new Date();
-          let currentYear = dateNow.getFullYear();
-          let currentMonth = dateNow.getMonth() + 1;
-          let currentDay = dateNow.getDate();
-          
-          let birthDay = +birthDate.slice(0, 2);
-          let birthMonth = +birthDate.slice(3, 5);
-          let birthYear = +birthDate.slice(-4);
-          let age = currentYear - birthYear;
-  
-          if (currentMonth < birthMonth) {
-            age--;
-          } else if (currentMonth === birthMonth) {
-            if (currentDay < birthDay) {
-              age--;
-            }
-          }
-  
-          if (age >= 18) {
-            return true;
-          } else {
-            return false;
-          }
-        },
-        error: "Você é menor de idade",
-      },
-    }),
-    phone: useInput({
-      name: "phone",
-      errorText: {
-        required: "Telefone obrigatório"
-      }
-    }),
-    email: useInput({
-      name: "email",
-      validation: "email",
-      errorText: {
-        required: "Email obrigatório",
-      },
-    }),
-    password: useInput({
-      name: "password",
-      validation: "senha",
-      errorText: {
-        required: "Digite a senha",
-      }
-    }),
-    confirmPassword: useInput({
-      name: "confirmPassword",
-      same: password.value,
-    }),
-    road: useInput({
-      name: "road",
-      errorText: {
-        required: "Rua obrigatória",
-      }
-    }),
-    complement: useInput({
-      name: "complement",
-      optional: true,
-    }),
-    district: useInput({
-      name: "district",
-      optional: true,
-    }),
-    city: useInput({
-      name: "city",
-      errorText: {
-        required: "Cidade obrigatório",
-      }
-    }),
-    stateCity: useInput({
-      name: "stateCity",
-      errorText: {
-        required: "Estado obrigatório",
-      }
-    }),
-    zip: useInput({
-      name: "zip",
-      optional: true,
-    }),
-  } */
-
   const name = useInput({
     name: "name",
     errorText: {
-      required: "Nome obrigatório"
-    }
+      required: "Nome obrigatório",
+    },
   });
   const cpf = useInput({
     name: "cpf",
     errorText: {
-      required: "CPF obrigatório"
-    }
+      required: "CPF obrigatório",
+    },
   });
   const birth_date = useInput({
     name: "birth_date",
-    errorText: { required: "Data de nascimento obrigatória" },  
+    errorText: { required: "Data de nascimento obrigatória" },
     minLength: 10,
     maxLength: 10,
     customMask: {
@@ -167,7 +47,7 @@ const RegisterPF = ({ authenticated }) => {
         let currentYear = dateNow.getFullYear();
         let currentMonth = dateNow.getMonth() + 1;
         let currentDay = dateNow.getDate();
-        
+
         let birthDay = +birthDate.slice(0, 2);
         let birthMonth = +birthDate.slice(3, 5);
         let birthYear = +birthDate.slice(-4);
@@ -193,8 +73,8 @@ const RegisterPF = ({ authenticated }) => {
   const phone = useInput({
     name: "phone",
     errorText: {
-      required: "Telefone obrigatório"
-    }
+      required: "Telefone obrigatório",
+    },
   });
   const email = useInput({
     name: "email",
@@ -208,7 +88,7 @@ const RegisterPF = ({ authenticated }) => {
     validation: "senha",
     errorText: {
       required: "Digite a senha",
-    }
+    },
   });
   const confirmPassword = useInput({
     name: "confirmPassword",
@@ -218,7 +98,7 @@ const RegisterPF = ({ authenticated }) => {
     name: "road",
     errorText: {
       required: "Rua obrigatória",
-    }
+    },
   });
   const complement = useInput({
     name: "complement",
@@ -232,13 +112,13 @@ const RegisterPF = ({ authenticated }) => {
     name: "city",
     errorText: {
       required: "Cidade obrigatório",
-    }
+    },
   });
   const stateCity = useInput({
     name: "stateCity",
     errorText: {
       required: "Estado obrigatório",
-    }
+    },
   });
   const zip = useInput({
     name: "zip",
@@ -251,36 +131,67 @@ const RegisterPF = ({ authenticated }) => {
       0: [name, cpf, birth_date, phone, email, password, confirmPassword],
       1: [road, complement, district, city, stateCity, zip],
     },
-    formFields: [name,cpf,birth_date,phone,email,password,confirmPassword,road,complement,district,city,stateCity,zip],
+    formFields: [
+      name,
+      cpf,
+      birth_date,
+      phone,
+      email,
+      password,
+      confirmPassword,
+      road,
+      complement,
+      district,
+      city,
+      stateCity,
+      zip,
+    ],
     submitCallback: (formData) => {
       onSubmitFunction(formData);
     },
   });
 
   const history = useHistory();
-  
-  
+
   const handleNavigation = () => {
     return history.push("/login");
   };
-  
-  const onSubmitFunction = ({ name, cpf, birthDate, phone, email, password, road, complement, district, city, stateCity, zip }) => {
 
-    const user = { name, cpf, birthDate, phone, email, password,
-      address: {road, complement, district, city, stateCity, zip}
+  const onSubmitFunction = ({
+    name,
+    cpf,
+    birthDate,
+    phone,
+    email,
+    password,
+    road,
+    complement,
+    district,
+    city,
+    stateCity,
+    zip,
+  }) => {
+    const user = {
+      name,
+      cpf,
+      birthDate,
+      phone,
+      email,
+      password,
+      address: `${road} - ${district}, ${city} - ${stateCity}, ${zip}, ${complement}`,
     };
 
     api
-    .post("/register", user)
-    .then((_) => {
-      toast.success("Parabéns, conta criada com sucesso!");
-      return history.push("/login");
-    })
+      .post("/register", user)
+      .then((_) => {
+        toast.success("Parabéns, conta criada com sucesso!");
+        return history.push("/login");
+      })
       .catch((_) => toast.error("Erro ao criar a conta, e-mail já cadastrado"));
   };
   if (authenticated) {
     return <Redirect to="/dashboard" />;
-  } 
+  }
 
   return (
     <form onSubmit={form.handleSubmit}>
