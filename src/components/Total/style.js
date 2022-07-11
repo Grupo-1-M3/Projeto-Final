@@ -10,7 +10,7 @@ export const ContainerTotal = styled.div`
   padding: 10px;
   box-shadow: 0px 0px 13px 0px black;
   border-radius: 8px;
-  background-color:  #282528;
+  background-color: #282528;
   border: var(--color-primary-50) 2px solid;
   margin: 20px;
   margin-right: 4rem;
@@ -36,7 +36,7 @@ export const ContainerTotal = styled.div`
       background-color: #33c163;
     }
   }
-  }
+
   @media (max-width: 425px) {
     width: 250px;
     margin-right: 1rem;
