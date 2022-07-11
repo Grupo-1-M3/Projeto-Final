@@ -1,9 +1,12 @@
 import React from "react";
 import { Switch, Route } from "react-router-dom";
+
 import DashBoard from "../pages/DashBoard";
 import Home from "../pages/Home";
 import Login from "../pages/Login";
-import Register from "../pages/Register";
+import Register from "../pages/Register/Register";
+import Cart from "../pages/Cart/Cart";
+import PageCompany from "../pages/PageCompany";
 
 const Routes = () => {
   return (
@@ -19,6 +22,12 @@ const Routes = () => {
       </Route>
       <Route exact path={"/dashboard"}>
         <DashBoard />
+      </Route>
+      <Route exact path={"/cart"}>
+        <Cart />
+      </Route>
+      <Route exact path={"/PageCompany"}>
+        <PageCompany />
       </Route>
     </Switch>
   );
