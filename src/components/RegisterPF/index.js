@@ -1,140 +1,361 @@
 /* eslint-disable no-useless-escape */
 import "./styles.css";
-
-import { useForm } from "react-hook-form";
-import { yupResolver } from "@hookform/resolvers/yup";
-
-import formSchema from "./formYup";
-import formSchemaTwoStage from "./formYupTwoStage";
+import { useForm, useInput } from "lx-react-form";
 
 import Button from "../Button";
 import { useHistory, Redirect } from "react-router-dom";
 import { api } from "../../services/api";
 import { toast } from "react-toastify";
-import { useState } from "react";
 
 const RegisterPF = ({ authenticated }) => {
-  const [stage, setStage] = useState(0);
-  const [firstStep, setFirstStep] = useState({});
 
-  const totalSchemas = [formSchema, formSchemaTwoStage];
+  /* const fieldForm = {
+    name: useInput({
+      name: "name",
+      errorText: {
+        required: "Nome obrigatório"
+      }
+    }),
+    cpf: useInput({
+      name: "cpf",
+      errorText: {
+        required: "CPF obrigatório"
+      }
+    }),
+    birth_date: useInput({
+      name: "birth_date",
+      errorText: { required: "Data de nascimento obrigatória" },  
+      minLength: 10,
+      maxLength: 10,
+      customMask: {
+        expressions: [
+          {
+            regex: /\D/g,
+            replace: "",
+          },
+          {
+            regex: /(\d{2})(\d)/,
+            replace: "$1/$2",
+          },
+          {
+            regex: /(\d{2})(\d{4})/,
+            replace: "$1/$2",
+          },
+        ],
+      },
+      customRule: {
+        callback: (birthDate) => {
+          let dateNow = new Date();
+          let currentYear = dateNow.getFullYear();
+          let currentMonth = dateNow.getMonth() + 1;
+          let currentDay = dateNow.getDate();
+          
+          let birthDay = +birthDate.slice(0, 2);
+          let birthMonth = +birthDate.slice(3, 5);
+          let birthYear = +birthDate.slice(-4);
+          let age = currentYear - birthYear;
+  
+          if (currentMonth < birthMonth) {
+            age--;
+          } else if (currentMonth === birthMonth) {
+            if (currentDay < birthDay) {
+              age--;
+            }
+          }
+  
+          if (age >= 18) {
+            return true;
+          } else {
+            return false;
+          }
+        },
+        error: "Você é menor de idade",
+      },
+    }),
+    phone: useInput({
+      name: "phone",
+      errorText: {
+        required: "Telefone obrigatório"
+      }
+    }),
+    email: useInput({
+      name: "email",
+      validation: "email",
+      errorText: {
+        required: "Email obrigatório",
+      },
+    }),
+    password: useInput({
+      name: "password",
+      validation: "senha",
+      errorText: {
+        required: "Digite a senha",
+      }
+    }),
+    confirmPassword: useInput({
+      name: "confirmPassword",
+      same: password.value,
+    }),
+    road: useInput({
+      name: "road",
+      errorText: {
+        required: "Rua obrigatória",
+      }
+    }),
+    complement: useInput({
+      name: "complement",
+      optional: true,
+    }),
+    district: useInput({
+      name: "district",
+      optional: true,
+    }),
+    city: useInput({
+      name: "city",
+      errorText: {
+        required: "Cidade obrigatório",
+      }
+    }),
+    stateCity: useInput({
+      name: "stateCity",
+      errorText: {
+        required: "Estado obrigatório",
+      }
+    }),
+    zip: useInput({
+      name: "zip",
+      optional: true,
+    }),
+  } */
 
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm({ resolver: yupResolver(totalSchemas[stage]) });
+  const name = useInput({
+    name: "name",
+    errorText: {
+      required: "Nome obrigatório"
+    }
+  });
+  const cpf = useInput({
+    name: "cpf",
+    errorText: {
+      required: "CPF obrigatório"
+    }
+  });
+  const birth_date = useInput({
+    name: "birth_date",
+    errorText: { required: "Data de nascimento obrigatória" },  
+    minLength: 10,
+    maxLength: 10,
+    customMask: {
+      expressions: [
+        {
+          regex: /\D/g,
+          replace: "",
+        },
+        {
+          regex: /(\d{2})(\d)/,
+          replace: "$1/$2",
+        },
+        {
+          regex: /(\d{2})(\d{4})/,
+          replace: "$1/$2",
+        },
+      ],
+    },
+    customRule: {
+      callback: (birthDate) => {
+        let dateNow = new Date();
+        let currentYear = dateNow.getFullYear();
+        let currentMonth = dateNow.getMonth() + 1;
+        let currentDay = dateNow.getDate();
+        
+        let birthDay = +birthDate.slice(0, 2);
+        let birthMonth = +birthDate.slice(3, 5);
+        let birthYear = +birthDate.slice(-4);
+        let age = currentYear - birthYear;
+
+        if (currentMonth < birthMonth) {
+          age--;
+        } else if (currentMonth === birthMonth) {
+          if (currentDay < birthDay) {
+            age--;
+          }
+        }
+
+        if (age >= 18) {
+          return true;
+        } else {
+          return false;
+        }
+      },
+      error: "Você é menor de idade",
+    },
+  });
+  const phone = useInput({
+    name: "phone",
+    errorText: {
+      required: "Telefone obrigatório"
+    }
+  });
+  const email = useInput({
+    name: "email",
+    validation: "email",
+    errorText: {
+      required: "Email obrigatório",
+    },
+  });
+  const password = useInput({
+    name: "password",
+    validation: "senha",
+    errorText: {
+      required: "Digite a senha",
+    }
+  });
+  const confirmPassword = useInput({
+    name: "confirmPassword",
+    same: password.value,
+  });
+  const road = useInput({
+    name: "road",
+    errorText: {
+      required: "Rua obrigatória",
+    }
+  });
+  const complement = useInput({
+    name: "complement",
+    optional: true,
+  });
+  const district = useInput({
+    name: "district",
+    optional: true,
+  });
+  const city = useInput({
+    name: "city",
+    errorText: {
+      required: "Cidade obrigatório",
+    }
+  });
+  const stateCity = useInput({
+    name: "stateCity",
+    errorText: {
+      required: "Estado obrigatório",
+    }
+  });
+  const zip = useInput({
+    name: "zip",
+    optional: true,
+  });
+
+  const form = useForm({
+    clearFields: true,
+    stepFields: {
+      0: [name, cpf, birth_date, phone, email, password, confirmPassword],
+      1: [road, complement, district, city, stateCity, zip],
+    },
+    formFields: [name,cpf,birth_date,phone,email,password,confirmPassword,road,complement,district,city,stateCity,zip],
+    submitCallback: (formData) => {
+      onSubmitFunction(formData);
+    },
+  });
 
   const history = useHistory();
-
+  
+  
   const handleNavigation = () => {
     return history.push("/login");
   };
+  
+  const onSubmitFunction = ({ name, cpf, birthDate, phone, email, password, road, complement, district, city, stateCity, zip }) => {
 
-  const previousStep = () => {
-    setStage(0)
-  }
+    const user = { name, cpf, birthDate, phone, email, password,
+      address: {road, complement, district, city, stateCity, zip}
+    };
 
-  const handleNextStep = ({ email, password, name, cpf, birth_date, phone }) => {
-    setFirstStep({email, password, name, cpf, birth_date, phone})
-    console.log(firstStep)
-    setStage(1)
-  };
-
-  const onSubmitFunction = ({road, complement, district, city, stateCity, zip}) => {
-    const user = {...firstStep, road, complement, district, city, stateCity, zip};
-    console.log(user)
     api
-      .post("/register", user)
-      .then((_) => {
-        toast.success("Parabéns, conta criada com sucesso!");
-        return history.push("/login");
-      })
+    .post("/register", user)
+    .then((_) => {
+      toast.success("Parabéns, conta criada com sucesso!");
+      return history.push("/login");
+    })
       .catch((_) => toast.error("Erro ao criar a conta, e-mail já cadastrado"));
   };
   if (authenticated) {
     return <Redirect to="/dashboard" />;
-  }
+  } 
 
-  return !stage ? (
-    <div className="container">
-      <Button onClick={handleNavigation}>Voltar</Button>
-      <div className="container body">
-        <h1>TrashNoFood</h1>
-        <p>Crie sua conta</p>
-        <form
-          className="formRegisterPF"
-          onSubmit={handleSubmit(handleNextStep)}
-        >
-          {errors.name && <label>{errors.name.message}</label>}
-          <input placeholder="Nome" {...register("name")} />
+  return (
+    <form onSubmit={form.handleSubmit}>
+      {form.step === 0 && (
+        <div className="container">
+          <Button onClick={handleNavigation}>Voltar</Button>
 
-          {errors.cpf && <label>{errors.cpf.message}</label>}
-          <input placeholder="CPF" {...register("cpf")} />
+          <div className="container body">
+            <h1>TrashNoFood</h1>
+            <p>Crie sua conta</p>
+            {name.error && <label>{name.error}</label>}
+            <input placeholder="Nome" {...name.inputProps} />
 
-          {errors.birth_date && <label>{errors.birth_date.message}</label>}
-          <input placeholder="Data de Nascimento" {...register("birth_date")} />
+            {cpf.error && <label>{cpf.error}</label>}
+            <input placeholder="CPF" {...cpf.inputProps} />
 
-          {errors.phone && <label>{errors.phone.message}</label>}
-          <input placeholder="Telefone" {...register("phone")} />
+            {birth_date.error && <label>{birth_date.error}</label>}
+            <input
+              placeholder="Data de Nascimento"
+              {...birth_date.inputProps}
+            />
 
-          {errors.email && <label>{errors.email.message}</label>}
-          <input placeholder="Digite seu email" {...register("email")} />
+            {phone.error && <label>{phone.error}</label>}
+            <input placeholder="Telefone" {...phone.inputProps} />
 
-          {errors.password && <label>{errors.password.message}</label>}
-          <input
-            placeholder="Digite aqui sua senha"
-            type="password"
-            {...register("password")}
-          />
+            {email.error && <label>{email.error}</label>}
+            <input placeholder="Email" {...email.inputProps} />
 
-          {errors.confirmPassword && (
-            <label>{errors.confirmPassword.message}</label>
-          )}
-          <input
-            placeholder="Digite novamente sua senha"
-            type="password"
-            {...register("confirmPassword")}
-          />
+            {password.error && <label>{password.error}</label>}
+            <input
+              placeholder="Digite aqui sua senha"
+              type="password"
+              {...password.inputProps}
+            />
 
-          <button type="submit">Proximo Passo</button>
-        </form>
-        {errors.status && <label>{errors.data.response.data.message}</label>}
-      </div>
-    </div>
-  ) : (
-    <div className="container">
-      <Button onClick={previousStep}>Passo anterior</Button>
-      <div className="container body">
-        <h1>TrashNoFood</h1>
-        <p>Segunda Etapa</p>
-        <form
-          className="formRegisterPF"
-          onSubmit={handleSubmit(onSubmitFunction)}
-        >
-          {errors.road && <label>{errors.road.message}</label>}
-          <input placeholder="Rua" {...register("road")} />
+            {confirmPassword.error && <label>{confirmPassword.error}</label>}
+            <input
+              placeholder="Digite novamente sua senha"
+              type="password"
+              {...confirmPassword.inputProps}
+            />
 
-          {errors.complement && <label>{errors.complement.message}</label>}
-          <input placeholder="Logradouro" {...register("complement")} />
+            <button type="button" onClick={form.nextStep}>
+              Proximo Passo
+            </button>
+          </div>
+        </div>
+      )}
 
-          {errors.district && <label>{errors.district.message}</label>}
-          <input placeholder="Bairro" {...register("district")} />
+      {form.step === 1 && (
+        <div className="container">
+          <Button onClick={form.previousStep}>Passo anterior</Button>
+          <div className="container body">
+            <h1>TrashNoFood</h1>
+            <p>Segunda Etapa</p>
+            {road.error && <label>{road.error}</label>}
+            <input placeholder="Rua" {...road.inputProps} />
 
-          {errors.city && <label>{errors.city.message}</label>}
-          <input placeholder="Cidade" {...register("city")} />
+            <input placeholder="Complemento" {...complement.inputProps} />
 
-          {errors.stateCity && <label>{errors.stateCity.message}</label>}
-          <input placeholder="Estado" {...register("stateCity")} />
+            <input placeholder="Bairro" {...district.inputProps} />
 
-          {errors.zip && <label>{errors.zip.message}</label>}
-          <input placeholder="CEP" type="cep" {...register("zip")} />
+            {city.error && <label>{city.error}</label>}
+            <input placeholder="Cidade" {...city.inputProps} />
 
-          <button type="submit">Cadastrar</button>
-        </form>
-        {errors.status && <label>{errors.data.response.data.message}</label>}
-      </div>
-    </div>
+            {stateCity.error && <label>{stateCity.error}</label>}
+            <input placeholder="Estado" {...stateCity.inputProps} />
+
+            <input placeholder="CEP" {...zip.inputProps} />
+
+            <button type="submit">Cadastrar</button>
+          </div>
+        </div>
+      )}
+    </form>
   );
 };
 
