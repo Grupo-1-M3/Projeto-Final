@@ -17,10 +17,14 @@
 .modal-content {
     width: 90%;
     max-width: 500px;
-    height: 300px;
+    height: 370px;
     background-color: var(--color-medium-green);
     padding: 1rem;
     border-radius: 6px;
+}
+
+form {
+    height: 90%;
     display: flex;
     align-items: center;
     flex-direction: column;
@@ -33,16 +37,25 @@
     justify-content: space-between;
     align-items: center;
 }
+
+@media (max-width: 306px) {
+    .titleModal {
+        font-size: 20px;
+    }
+}
+
 .X {
     cursor: pointer;
 }
 
 input {
-    width: 60%;
-    height: 30px;
-    border: none;
-    border-radius: 6px;
+    width: 200px;
+    height: 24px;
     text-align: center;
+}
+
+input::placeholder {
+    font-size: 12px;
 }
 
 .enviar {
@@ -50,8 +63,8 @@ input {
     height: 20px;
     border: none;
     border-radius: 6px;
+    margin-top: 8px;
 }
 .enviar:hover {
-    background-color: var(--color-dark-green);
-    color: white;
+    background-color: var(--color-light-green);
 }
