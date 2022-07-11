@@ -18,6 +18,7 @@ import "swiper/css";
 import "swiper/css/pagination";
 import { Pagination, Autoplay } from "swiper";
 import { useHistory } from "react-router-dom";
+import NavBar from "../../components/NavBar";
 
 const Home = () => {
   const history = useHistory();
@@ -35,10 +36,7 @@ const Home = () => {
 
   return (
     <>
-      <HeaderStyled>
-        <img src={Logo} alt="Logo" />
-      </HeaderStyled>
-
+      <NavBar />
       <Content>
         <div>
           <h1>#1 DO BRASIL CONTRA O DESPERDÍCIO DE ALIMENTOS.</h1>
@@ -66,8 +64,8 @@ const Home = () => {
         <h2>Produtos com maiores descontos hoje</h2>
 
         <div className="content">
-          {prices.map((price) => (
-            <div className="product">
+          {prices.map((price, index) => (
+            <div className="product" key={index}>
               <img
                 src="https://panattos.com.br/uploads/produtos/2017/07/pao-frances-fermentacao-curta-massa-congelada.jpg"
                 alt="pão"
