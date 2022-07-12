@@ -43,11 +43,10 @@ const NavBar = () => {
       position="static"
       color="transparent"
       sx={{
-        background: "rgb(0, 0, 0)",
+        background: "linear-gradient(var(--background-header-home), var(--background-home))",
         boxShadow: "0 4px 30px rgba(0, 0, 0, 0.1)",
         backdropFilter: "blur(5px)",
         WebkitBackdropFilter: "blur(5px)",
-        border: "1px solid rgb(0, 0, 0)",
       }}
     >
       <Container maxWidth="xl">
@@ -58,7 +57,7 @@ const NavBar = () => {
             sx={{ width: 56, height: 56, display: { xs: "none", md: "flex" } }}
           />
 
-          <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
+          <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" }, }}>
             <IconButton
               size="large"
               aria-label="account of current user"
@@ -92,7 +91,7 @@ const NavBar = () => {
                   key={page.text}
                   onClick={() => console.log(page.route)}
                 >
-                  <Typography textAlign="center" sx={{ color: "primary" }}>
+                  <Typography textAlign="center" sx={{ color: "primary", }}>
                     {page.text}
                   </Typography>
                 </MenuItem>
@@ -154,7 +153,7 @@ const NavBar = () => {
               <Button
                 key={page.text}
                 onClick={handleCloseNavMenu}
-                sx={{ my: 2, color: "white", display: "block" }}
+                sx={{ my: 2, color: "white", display: "block", }}
               >
                 {page.text}
               </Button>
