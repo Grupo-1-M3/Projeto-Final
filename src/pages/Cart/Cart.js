@@ -5,6 +5,7 @@ import { CartContext } from "../../contexts/Cart";
 import Total from "../../components/Total";
 import Header from "../../components/Header";
 import HomeTeste from "../PaginaTest";
+import SearchNavBar from "../../components/SearchNavBar";
 
 const Cart = () => {
   const { productsOnCart, setProductsOnCart } = useContext(CartContext);
@@ -27,7 +28,7 @@ const Cart = () => {
 
   return (
     <>
-      <Header />
+      <SearchNavBar isCart />
       <ContainerCart>
         {/*  <HomeTeste /> */}
         <div>

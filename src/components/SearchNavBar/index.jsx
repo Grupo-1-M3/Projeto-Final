@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import {
   Box,
   Toolbar,
@@ -10,8 +10,11 @@ import {
   MenuItem,
   AppBar,
   Avatar,
+  Badge,
+  Divider,
 } from "@mui/material";
 import { MdOutlineMenu, MdSearch, MdLogout } from "react-icons/md";
+import { IoCartSharp } from "react-icons/io5";
 
 import { Search, SearchIconWrapper, StyledInputBase } from "./styles";
 
@@ -19,6 +22,7 @@ import Logo from "../../assets/projectLogo.png";
 
 import { useHistory } from "react-router-dom";
 import { useState } from "react";
+import { CartContext } from "../../contexts/Cart";
 
 const pages = [
   { text: "Home", route: "/" },
@@ -27,7 +31,7 @@ const pages = [
   { text: "Blog", route: "blog" },
 ];
 
-const SearchNavBar = () => {
+const SearchNavBar = ({ isCart = false }) => {
   const [anchorElNav, setAnchorElNav] = useState(null);
   const history = useHistory();
 
@@ -38,6 +42,7 @@ const SearchNavBar = () => {
   const handleCloseNavMenu = () => {
     setAnchorElNav(null);
   };
+  const { products } = useContext(CartContext);
 
   return (
     <AppBar
@@ -93,16 +98,42 @@ const SearchNavBar = () => {
                   key={page.text}
                   onClick={() => console.log(page.route)}
                 >
-                  <Typography textAlign="center" sx={{ color: "primary" }}>
+                  <Typography
+                    textAlign="center"
+                    sx={{ color: "primary", width: "100%" }}
+                  >
                     {page.text}
                   </Typography>
                 </MenuItem>
               ))}
+              <Divider />
+              <MenuItem>
+                <Button
+                  onClick={() => console.log(products)}
+                  variant="contained"
+                  sx={{
+                    backgroundColor: "var(--color-button-home)",
+                    "&:hover": {
+                      backgroundColor: "var(--color-button-home-hover)",
+                    },
+                  }}
+                  startIcon={<IoCartSharp color="#FFF" />}
+                >
+                  <Badge
+                    badgeContent={3}
+                    color="primary"
+                    sx={{ cursor: "pointer" }}
+                  >
+                    Carrinho
+                  </Badge>
+                </Button>
+              </MenuItem>
               <MenuItem>
                 <Button
                   variant="contained"
                   sx={{
                     backgroundColor: "var(--color-button-home)",
+                    width: "100%",
                     "&:hover": {
                       backgroundColor: "var(--color-button-home-hover)",
                     },
@@ -138,23 +169,38 @@ const SearchNavBar = () => {
               </Button>
             ))}
           </Box>
-          <Box sx={{ flexGrow: 1, maxWidth: "380px", width: "100%" }}>
-            <Search>
-              <SearchIconWrapper>
-                <MdSearch color="#ededed" />
-              </SearchIconWrapper>
-              <StyledInputBase
-                sx={{
-                  width: "100%",
-                  color: "#fff",
-                  "&:focus": {
-                    border: "1px solid #e5e5e5",
-                  },
-                }}
-                placeholder="Search…"
-                inputProps={{ "aria-label": "search" }}
-              />
-            </Search>
+          {isCart ? (
+            <></>
+          ) : (
+            <Box sx={{ flexGrow: 1, maxWidth: "380px", width: "100%" }}>
+              <Search>
+                <SearchIconWrapper>
+                  <MdSearch color="#ededed" />
+                </SearchIconWrapper>
+                <StyledInputBase
+                  sx={{
+                    width: "100%",
+                    color: "#fff",
+                    "&:focus": {
+                      border: "1px solid #e5e5e5",
+                    },
+                  }}
+                  placeholder="Search…"
+                  inputProps={{ "aria-label": "search" }}
+                />
+              </Search>
+            </Box>
+          )}
+          <Box sx={{ flexGrow: 0, display: { xs: "none", md: "flex" } }}>
+            <IconButton onClick={() => console.log(products)}>
+              <Badge
+                badgeContent={3}
+                color="primary"
+                sx={{ cursor: "pointer" }}
+              >
+                <IoCartSharp color="#FFF" />
+              </Badge>
+            </IconButton>
           </Box>
           <Box sx={{ flexGrow: 0, display: { xs: "none", md: "flex" } }}>
             <Button
