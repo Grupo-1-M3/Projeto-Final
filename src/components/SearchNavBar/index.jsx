@@ -34,6 +34,7 @@ const pages = [
 const SearchNavBar = ({ isCart = false }) => {
   const [anchorElNav, setAnchorElNav] = useState(null);
   const history = useHistory();
+  const { productsOnCart } = useContext(CartContext);
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
@@ -42,8 +43,12 @@ const SearchNavBar = ({ isCart = false }) => {
   const handleCloseNavMenu = () => {
     setAnchorElNav(null);
   };
-  const { products } = useContext(CartContext);
 
+  const logout = () => {
+    localStorage.removeItem("@TrashNoFood:token");
+    localStorage.removeItem("@TrashNoFood:id");
+    history.push("/");
+  };
   return (
     <AppBar
       position="static"
@@ -96,7 +101,7 @@ const SearchNavBar = ({ isCart = false }) => {
               {pages.map((page) => (
                 <MenuItem
                   key={page.text}
-                  onClick={() => console.log(page.route)}
+                  onClick={() => history.push(`${page.route}`)}
                 >
                   <Typography
                     textAlign="center"
@@ -109,7 +114,7 @@ const SearchNavBar = ({ isCart = false }) => {
               <Divider />
               <MenuItem>
                 <Button
-                  onClick={() => console.log(products)}
+                  onClick={() => history.push("/cart")}
                   variant="contained"
                   sx={{
                     backgroundColor: "var(--color-button-home)",
@@ -120,7 +125,7 @@ const SearchNavBar = ({ isCart = false }) => {
                   startIcon={<IoCartSharp color="#FFF" />}
                 >
                   <Badge
-                    badgeContent={3}
+                    badgeContent={productsOnCart ? productsOnCart.length : 0}
                     color="primary"
                     sx={{ cursor: "pointer" }}
                   >
@@ -131,6 +136,7 @@ const SearchNavBar = ({ isCart = false }) => {
               <MenuItem>
                 <Button
                   variant="contained"
+                  onClick={logout}
                   sx={{
                     backgroundColor: "var(--color-button-home)",
                     width: "100%",
@@ -162,7 +168,7 @@ const SearchNavBar = ({ isCart = false }) => {
             {pages.map((page) => (
               <Button
                 key={page.text}
-                onClick={handleCloseNavMenu}
+                onClick={() => history.push(`${page.route}`)}
                 sx={{ my: 2, color: "white", display: "block" }}
               >
                 {page.text}
@@ -192,9 +198,9 @@ const SearchNavBar = ({ isCart = false }) => {
             </Box>
           )}
           <Box sx={{ flexGrow: 0, display: { xs: "none", md: "flex" } }}>
-            <IconButton onClick={() => console.log(products)}>
+            <IconButton onClick={() => history.push("/cart")}>
               <Badge
-                badgeContent={3}
+                badgeContent={productsOnCart ? productsOnCart.length : 0}
                 color="primary"
                 sx={{ cursor: "pointer" }}
               >
@@ -204,6 +210,7 @@ const SearchNavBar = ({ isCart = false }) => {
           </Box>
           <Box sx={{ flexGrow: 0, display: { xs: "none", md: "flex" } }}>
             <Button
+              onClick={logout}
               variant="contained"
               sx={{
                 backgroundColor: "var(--color-button-home)",
