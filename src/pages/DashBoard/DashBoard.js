@@ -1,9 +1,18 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Searchbar from "../../components/Searchbar";
+import { api } from "../../services/api";
 import { ContainerButton, Container, Card } from "./style";
+import { api } from "../../services/api";
 
 const DashBoard = () => {
   const [filterFood, setFilterFood] = useState([]);
+  const [food, setFood] = useState([]);
+
+  useEffect(() => {
+    async function getFood() {
+      const response = await api.get("660/products");
+    }
+  }, []);
 
   const foods = [
     {
