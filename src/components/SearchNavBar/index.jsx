@@ -10,8 +10,10 @@ import {
   MenuItem,
   AppBar,
   Avatar,
+  Search,
+  SearchIconWrapper,
 } from "@mui/material";
-import { MdOutlineMenu } from "react-icons/md";
+import { MdOutlineMenu, MdSearch } from "react-icons/md";
 
 import Logo from "../../assets/projectLogo.png";
 
@@ -122,6 +124,24 @@ const SearchNavBar = () => {
                 {page.text}
               </Button>
             ))}
+          </Box>
+          <Box>
+            <Search>
+              <SearchIconWrapper>
+                <MdSearch color="#ededed" />
+              </SearchIconWrapper>
+              <StyledInputBase
+                sx={{
+                  width: "100%",
+                  color: "#fff",
+                  "&:focus": {
+                    border: "1px solid #e5e5e5",
+                  },
+                }}
+                placeholder="Search…"
+                inputProps={{ "aria-label": "search" }}
+              />
+            </Search>
           </Box>
         </Toolbar>
       </Container>
