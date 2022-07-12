@@ -1,7 +1,14 @@
-import React from "react";
+import { CartProvider } from "./Cart";
+import { ProductsProvider } from "./Products";
 
-const index = () => {
-  return <div></div>;
-};
+function Providers({ children }) {
+  return (
+    <>
+      <ProductsProvider>
+        <CartProvider>{children}</CartProvider>
+      </ProductsProvider>
+    </>
+  );
+}
 
-export default index;
+export default Providers;
