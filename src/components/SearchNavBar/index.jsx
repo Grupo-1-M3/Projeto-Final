@@ -98,12 +98,25 @@ const SearchNavBar = () => {
                   </Typography>
                 </MenuItem>
               ))}
+              <MenuItem>
+                <Button
+                  variant="contained"
+                  sx={{
+                    backgroundColor: "var(--color-button-home)",
+                    "&:hover": {
+                      backgroundColor: "var(--color-button-home-hover)",
+                    },
+                  }}
+                  startIcon={<MdLogout />}
+                >
+                  Sair
+                </Button>
+              </MenuItem>
             </Menu>
           </Box>
           <Box
             noWrap
             sx={{
-              mr: 2,
               display: { xs: "flex", md: "none" },
               flexGrow: 1,
             }}
@@ -114,7 +127,7 @@ const SearchNavBar = () => {
               sx={{ width: 56, height: 56, cursor: "pointer" }}
             />
           </Box>
-          <Box sx={{ flexGrow: 0, display: { xs: "none", md: "flex" } }}>
+          <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
             {pages.map((page) => (
               <Button
                 key={page.text}
@@ -125,7 +138,7 @@ const SearchNavBar = () => {
               </Button>
             ))}
           </Box>
-          <Box sx={{ flexGrow: 1 }}>
+          <Box sx={{ flexGrow: 1, maxWidth: "380px", width: "100%" }}>
             <Search>
               <SearchIconWrapper>
                 <MdSearch color="#ededed" />
@@ -143,7 +156,7 @@ const SearchNavBar = () => {
               />
             </Search>
           </Box>
-          <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
+          <Box sx={{ flexGrow: 0, display: { xs: "none", md: "flex" } }}>
             <Button
               variant="contained"
               sx={{
