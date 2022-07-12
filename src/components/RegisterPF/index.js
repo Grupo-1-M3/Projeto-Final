@@ -1,6 +1,7 @@
 /* eslint-disable no-useless-escape */
-import "./styles.css";
+import { Container, Form } from "./style";
 import { useForm, useInput } from "lx-react-form";
+import Input from "../Input";
 
 import Button from "../Button";
 import { useHistory, Redirect } from "react-router-dom";
@@ -11,18 +12,18 @@ const RegisterPF = ({ authenticated }) => {
   const name = useInput({
     name: "name",
     errorText: {
-      required: "Nome obrigatório",
+      required: "Obrigatório",
     },
   });
   const cpf = useInput({
     name: "cpf",
     errorText: {
-      required: "CPF obrigatório",
+      required: "Obrigatório",
     },
   });
   const birth_date = useInput({
     name: "birth_date",
-    errorText: { required: "Data de nascimento obrigatória" },
+    errorText: { required: "Data - Obrigatória" },
     minLength: 10,
     maxLength: 10,
     customMask: {
@@ -73,7 +74,7 @@ const RegisterPF = ({ authenticated }) => {
   const phone = useInput({
     name: "phone",
     errorText: {
-      required: "Telefone obrigatório",
+      required: "Obrigatório",
     },
   });
   const email = useInput({
@@ -85,19 +86,22 @@ const RegisterPF = ({ authenticated }) => {
   });
   const password = useInput({
     name: "password",
-    validation: "senha",
+    minLength: 8,
     errorText: {
-      required: "Digite a senha",
-    },
+      required: "Senha Obrigatória",
+    }
   });
   const confirmPassword = useInput({
     name: "confirmPassword",
     same: password.value,
+    errorText: {
+      required: "Confirmação de senha Obrigatória",
+    },
   });
   const road = useInput({
     name: "road",
     errorText: {
-      required: "Rua obrigatória",
+      required: "Obrigatória",
     },
   });
   const complement = useInput({
@@ -111,13 +115,13 @@ const RegisterPF = ({ authenticated }) => {
   const city = useInput({
     name: "city",
     errorText: {
-      required: "Cidade obrigatório",
+      required: "Obrigatória",
     },
   });
   const stateCity = useInput({
     name: "stateCity",
     errorText: {
-      required: "Estado obrigatório",
+      required: "Obrigatório",
     },
   });
   const zip = useInput({
@@ -196,40 +200,64 @@ const RegisterPF = ({ authenticated }) => {
   return (
     <form onSubmit={form.handleSubmit}>
       {form.step === 0 && (
-        <div className="container">
-          <Button onClick={handleNavigation}>Voltar</Button>
+        <Container>
+          <Button type="button" onClick={handleNavigation}>Voltar</Button>
 
-          <div className="container body">
+          <Form>
             <h1>TrashNoFood</h1>
             <p>Crie sua conta</p>
-            {name.error && <label>{name.error}</label>}
-            <input placeholder="Nome" {...name.inputProps} />
 
-            {cpf.error && <label>{cpf.error}</label>}
-            <input placeholder="CPF" {...cpf.inputProps} />
+            <Input
+              label="Nome"
+              placeholder="Nome"
+              name="name"
+              {...name.inputProps}
+              error={name?.error}
+            />
 
-            {birth_date.error && <label>{birth_date.error}</label>}
-            <input
-              placeholder="Data de Nascimento"
+            <Input
+              label="CPF"
+              placeholder="Cpf"
+              name="cpf"
+              {...cpf.inputProps}
+              error={cpf?.error}
+            />
+
+            <Input
+              label={birth_date?.error ? birth_date.error : "Data de nascimento"}
+              placeholder="Data"
+              name="birth_date"
               {...birth_date.inputProps}
             />
 
-            {phone.error && <label>{phone.error}</label>}
-            <input placeholder="Telefone" {...phone.inputProps} />
-
-            {email.error && <label>{email.error}</label>}
-            <input placeholder="Email" {...email.inputProps} />
-
-            {password.error && <label>{password.error}</label>}
-            <input
+            <Input
+              label="Telefone"
+              placeholder="Telefone"
+              name="phone"
+              {...phone.inputProps}
+              error={phone?.error}
+            />            
+            
+            <Input
+            label="Email"
+            placeholder="Email"
+            name="email"
+            {...email.inputProps}
+            error={email?.error}
+            />
+            
+            <Input
+              label={password?.error ? password.error : "Senha"}
               placeholder="Digite aqui sua senha"
+              name="password"
               type="password"
               {...password.inputProps}
             />
-
-            {confirmPassword.error && <label>{confirmPassword.error}</label>}
-            <input
+            
+            <Input
+              label={confirmPassword?.error ? confirmPassword.error : "Confirmação de Senha"}
               placeholder="Digite novamente sua senha"
+              name="confirmPassword"
               type="password"
               {...confirmPassword.inputProps}
             />
@@ -237,34 +265,65 @@ const RegisterPF = ({ authenticated }) => {
             <button type="button" onClick={form.nextStep}>
               Proximo Passo
             </button>
-          </div>
-        </div>
+          </Form>
+        </Container>
       )}
 
       {form.step === 1 && (
-        <div className="container">
-          <Button onClick={form.previousStep}>Passo anterior</Button>
-          <div className="container body">
+        <Container>
+          <Button type="button" onClick={form.previousStep}>Passo anterior</Button>
+          <Form>
             <h1>TrashNoFood</h1>
             <p>Segunda Etapa</p>
-            {road.error && <label>{road.error}</label>}
-            <input placeholder="Rua" {...road.inputProps} />
 
-            <input placeholder="Complemento" {...complement.inputProps} />
+            <Input
+              label="Rua"
+              placeholder="Digite sua rua"
+              name="road"
+              {...road.inputProps}
+              error={road?.error}
+            /> 
+            
+            <Input
+              label="Complemento"
+              placeholder="Quadra xx, esquina com a..."
+              name="complement"
+              {...complement.inputProps}
+            /> 
 
-            <input placeholder="Bairro" {...district.inputProps} />
+            <Input
+              label="Bairro"
+              placeholder="Digite seu bairro"
+              name="district"
+              {...district.inputProps}
+            /> 
+            
+            <Input
+              label="Cidade"
+              placeholder="Digite sua cidade"
+              name="city"
+              {...city.inputProps}
+              error={city?.error}
+            /> 
 
-            {city.error && <label>{city.error}</label>}
-            <input placeholder="Cidade" {...city.inputProps} />
+            <Input
+              label="Estado"
+              placeholder="Digite seu estado"
+              name="stateCity"
+              {...stateCity.inputProps}
+              error={stateCity?.error}
+            /> 
 
-            {stateCity.error && <label>{stateCity.error}</label>}
-            <input placeholder="Estado" {...stateCity.inputProps} />
+            <Input
+              label="CEP"
+              placeholder="Digite o CEP"
+              name="zip"
+              {...zip.inputProps}
+            /> 
 
-            <input placeholder="CEP" {...zip.inputProps} />
-
-            <button type="submit">Cadastrar</button>
-          </div>
-        </div>
+            <button type="submit" >Cadastrar</button>
+          </Form>
+        </Container>
       )}
     </form>
   );
