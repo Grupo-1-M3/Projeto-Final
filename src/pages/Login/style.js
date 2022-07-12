@@ -48,7 +48,7 @@ export const Form = styled.form`
     }
 
     input {
-        background: #282528;
+        background-color: #262626;
         color: var(--white);
         font-weight: 600;
 
@@ -63,7 +63,6 @@ export const Form = styled.form`
         height: 38.5px;
         
         &::placeholder {
-        
             color: var(--white);
             font-weight: 600;
         }
