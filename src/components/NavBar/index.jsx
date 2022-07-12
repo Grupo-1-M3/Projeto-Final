@@ -10,14 +10,13 @@ import {
   MenuItem,
   AppBar,
   Avatar,
-  Button as MuiButton,
 } from "@mui/material";
-import { MdOutlineMenu, MdAccountCircle } from "react-icons/md";
+import { MdOutlineMenu } from "react-icons/md";
 
 import Logo from "../../assets/projectLogo.png";
 
 import { useHistory } from "react-router-dom";
-import { useContext, useState } from "react";
+import { useState } from "react";
 
 const pages = [
   { text: "Home", route: "/" },
@@ -97,32 +96,6 @@ const NavBar = () => {
                   </Typography>
                 </MenuItem>
               ))}
-              <Button
-                variant="text"
-                sx={{
-                  color: "#04812e",
-                  display: "block",
-                }}
-                onClick={() => history.push("/loginPartiner")}
-              >
-                Seja um parceiro
-              </Button>
-
-              <Button
-                variant="contained"
-                sx={{
-                  width: "100%",
-                  color: "white",
-                  display: "block",
-                  backgroundColor: "#05732a",
-                  "&:hover": {
-                    bgcolor: "#04812e",
-                  },
-                }}
-                onClick={() => history.push("/login")}
-              >
-                Entrar
-              </Button>
             </Menu>
           </Box>
           <Box
@@ -139,16 +112,6 @@ const NavBar = () => {
               sx={{ width: 56, height: 56, cursor: "pointer" }}
             />
           </Box>
-          <Box
-            noWrap
-            sx={{
-              display: { xs: "flex", md: "none" },
-            }}
-          >
-            <IconButton>
-              <MdAccountCircle color="#FFF" />
-            </IconButton>
-          </Box>
           <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
             {pages.map((page) => (
               <Button
@@ -159,42 +122,6 @@ const NavBar = () => {
                 {page.text}
               </Button>
             ))}
-          </Box>
-          <Box
-            sx={{ flexGrow: 0, display: { xs: "none", md: "flex" }, gap: 1 }}
-          >
-            <Button
-              sx={{
-                my: 3,
-                color: "white",
-                display: "block",
-                border: "1px solid #0bda51",
-                "&:hover": {
-                  bgcolor: "#05732a",
-                  border: "1px solid #05732a",
-                },
-              }}
-              onClick={() => history.push("/loginPartiner")}
-            >
-              Seja um parceiro
-            </Button>
-            <Button
-              variant="contained"
-              sx={{
-                my: 3,
-                color: "white",
-                display: "block",
-                backgroundColor: "#05732a",
-                border: "1px solid #05732a",
-                "&:hover": {
-                  bgcolor: "#04812e",
-                  border: "1px solid #04812e",
-                },
-              }}
-              onClick={() => history.push("/login")}
-            >
-              Entrar
-            </Button>
           </Box>
         </Toolbar>
       </Container>
