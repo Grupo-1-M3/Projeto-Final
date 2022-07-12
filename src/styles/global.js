@@ -30,7 +30,7 @@ export const GlobalStyle = createGlobalStyle`
     --background-home: #181818;
     --background-header-home: rgba(33, 33, 33, 0.98);
     --color-button-home: #282528;
-    --color-button-home-hover: #4CBB17;
+    --color-button-home-hover: #04812E;
     --background-footer: #000;
     --color-box-shadow: rgba(0, 0, 0, 0.25);
 
@@ -69,4 +69,4 @@ export const GlobalStyle = createGlobalStyle`
     -webkit-align-items: center;
     align-items: center;
   }
-`
+`;
