@@ -68,11 +68,10 @@ export const Form = styled.div`
     background-color: #262626;
     border: 1px solid var(--color-primary-dark);
     color: var(--white);
-
   }
 
   button {
-    background-color: #3E3B3E;
+    background-color: #3e3b3e;
 
     border: 1px solid var(--color-primary-dark);
     border-radius: 4px;
@@ -83,9 +82,8 @@ export const Form = styled.div`
     height: 38px;
     color: var(--white);
 
-    &:hover{
-    background-color: var(--color-dark-green);
+    &:hover {
+      background-color: var(--color-button-home-hover);
+    }
   }
-  }
-
 `;
