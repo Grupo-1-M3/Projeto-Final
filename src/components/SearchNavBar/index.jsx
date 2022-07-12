@@ -10,8 +10,6 @@ import {
   MenuItem,
   AppBar,
   Avatar,
-  Search,
-  SearchIconWrapper,
 } from "@mui/material";
 import { MdOutlineMenu, MdSearch } from "react-icons/md";
 
@@ -125,7 +123,7 @@ const SearchNavBar = () => {
               </Button>
             ))}
           </Box>
-          <Box>
+          {/* <Box>
             <Search>
               <SearchIconWrapper>
                 <MdSearch color="#ededed" />
@@ -142,7 +140,7 @@ const SearchNavBar = () => {
                 inputProps={{ "aria-label": "search" }}
               />
             </Search>
-          </Box>
+          </Box> */}
         </Toolbar>
       </Container>
     </AppBar>
