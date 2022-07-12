@@ -8,9 +8,10 @@ export const Container = styled.div`
     flex-direction: column;
     justify-content: center;
 
-    background: var(--color-primary);
-    color: var(--color-primary);
+    background: var(--background-footer);
+    color: var(--background-company);
 `
+
 export const Form = styled.form`
     
     display: flex;
@@ -19,7 +20,7 @@ export const Form = styled.form`
     padding: 38px 18px 24px 18px;
     gap: 10px;
 
-    background-color: var(--color-medium-green);
+    background-color: var(--background-header-home);
 
     border-radius: 4px; 
     box-shadow: var(--box-shadow);
@@ -31,35 +32,38 @@ export const Form = styled.form`
         margin-top: 8px;
         margin-bottom: 8px;
 
-        background: var(--color-light-green);
-        color: var(--color-primary-dark);
+        background: var(--color-button-two);
+        color: var(--white);
         font-weight: 600;
 
-        border: 1px solid var(--color-light-green);
+        border: 1px solid var(--color-primary-dark);
         border-radius: 4px;
 
         width: 259.9px;
         height: 38.5px;
 
+        &:hover{
+            background: var(--color-button-home-hover);
+        }
     }
+
     input {
-        background: var(--color-light-green);
-        color: var(--color-primary-dark);
+        background-color: #262626;
+        color: var(--white);
         font-weight: 600;
 
         align-items: center;
 
         padding: .3rem;
 
-        border: 1px solid var(--color-light-green);
+        border: 1px solid var(--color-primary-dark);
         border-radius: 4px;
 
         width: 264.66px;
         height: 38.5px;
         
         &::placeholder {
-        
-            color: var(--color-primary-dark);
+            color: var(--white);
             font-weight: 600;
         }
     }
