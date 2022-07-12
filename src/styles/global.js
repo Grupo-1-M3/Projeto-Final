@@ -19,6 +19,9 @@ export const GlobalStyle = createGlobalStyle`
   a {
     text-decoration: none;
   }
+  img{
+    object-fit: cover;
+  }
   :root {
     --white: #FAFAFA;
     --color-primary: #f2e8c4;
