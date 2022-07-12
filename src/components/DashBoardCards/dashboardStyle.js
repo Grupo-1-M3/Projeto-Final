@@ -9,9 +9,12 @@ export const Card = styled.div`
     justify-content: space-between;
     margin-bottom: 15px;
     border-radius: 6px;
+    color: black;
     img {
         border-top-left-radius: 5px;
         border-top-right-radius: 5px;
+        width: 200px;
+        height: 145px;
     }
     span {
         margin-left: 20px;
@@ -20,10 +23,18 @@ export const Card = styled.div`
         display: flex;
         width: 100%;
         height: 40px;
+        align-items: center;
+        justify-content: center;
     }
     .editar, .excluir {
         width: 40%;
+        height: 30px;
+        border-radius: 4px;
         margin: 0 auto;
+        border: none;
+        outline: none;
+        font-size: .9rem;
+        font-weight: 600;
     }
     .excluir {
         background-color: #fc4444;

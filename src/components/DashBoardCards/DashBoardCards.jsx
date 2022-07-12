@@ -13,27 +13,37 @@ Modal.setAppElement("#root");
 const DashBoardCards = ({ elem, setProducts }) => {
   const [modalIsOpen2, setModalIsOpen2] = useState(false);
   const token = localStorage.getItem("@TrashNoFood:token");
+  const id = Number(localStorage.getItem("@TrashNoFood:id"))
   const split = elem.validity.split("-");
   const validity = `${split[2]}/${split[1]}/${split[0]}`;
   const auth = {
     headers: { Authorization: `Bearer ${token}` },
   };
 
+  const getProducts = () => {
+    api.get(`/users/${id}?_embed=products`, auth).then((res) => {
+      setProducts(res.data.products)
+    })
+  }
+
   const {register, handleSubmit} = useForm({resolver: yupResolver(formSchema)})
 
   const updateProduct = (infoProduct) => {
     api.patch(`/660/products/${elem.id}`, infoProduct, auth).then((_) => {
       toast.success("Produto Atualizado", {
-        autoClose: 1500
+        autoClose: 2000
       })
+      getProducts()
+      setModalIsOpen2(false)
     }).catch((_) => toast.error("Ops, algo deu errado!"))
   }
 
   const deleteProduct = () => {
     api.delete(`/660/products/${elem.id}`, auth).then((_) => {
       toast.success("Produto excluído!", {
-        autoClose: 1500
+        autoClose: 2000
       });
+      getProducts()
     }).catch((_) => toast.error("Ops, algo deu errado!"))
   };
 
@@ -64,7 +74,7 @@ const DashBoardCards = ({ elem, setProducts }) => {
           overlayClassName="modal-overlay2"
           className="modal-content2"
         >
-          <form onSubmit={handleSubmit(updateProduct)}>
+          <form onSubmit={handleSubmit(updateProduct)} className="form">
             <Input
             register={register}
               name="category"
@@ -106,7 +116,7 @@ const DashBoardCards = ({ elem, setProducts }) => {
               placeholder="URL da imagem"
             />
             <Input register={register} name="validity" label="Validade" type="date" defaultValue={elem.validity}/>
-            <button type="submit">teste</button>
+            <button type="submit" className="salvar">Salvar</button>
           </form>
         </Modal>
         <button className="excluir" onClick={deleteProduct}>

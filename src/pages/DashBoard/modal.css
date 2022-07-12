@@ -18,7 +18,7 @@
     width: 90%;
     max-width: 500px;
     height: 370px;
-    background-color: var(--color-medium-green);
+    background-color: #04812E;
     padding: 1rem;
     border-radius: 6px;
 }
@@ -59,12 +59,11 @@ input::placeholder {
 }
 
 .enviar {
-    width: 40%;
-    height: 20px;
+    width: 35%;
+    height: 25px;
     border: none;
     border-radius: 6px;
     margin-top: 8px;
-}
-.enviar:hover {
-    background-color: var(--color-light-green);
+    background-color: black;
+    color: white;
 }

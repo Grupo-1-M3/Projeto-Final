@@ -1,17 +1,35 @@
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
+
+export const DashBoardBg = styled.div`
+    width: 100%;
+    height: 100%;
+    min-height: 100vh;
+    background-color: #000000;
+`
+
+const appearFromLeft = keyframes`
+    from {
+        opacity: 0;
+        transform: translateX(-100px)
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0px)
+    }
+`;
 
 export const DashBoardContainer = styled.div`
     width: 100%;
     max-width: 1300px;
     margin: 0 auto;
     height: 100%;
-
-    header {
-        height: 130px;
+    animation: ${appearFromLeft} 1.2s;
+    .dashboardHeader {
+        height: 150px;
         display: flex;
         justify-content: space-between;
         align-items: center;
-        border-bottom: 1px solid black;
+        border-bottom: 1px solid white;
 
         @media (max-width: 1301px) {
             padding-right: 1.5rem;
@@ -21,22 +39,35 @@ export const DashBoardContainer = styled.div`
         @media (max-width: 510px) {
             flex-direction: column;
             justify-content: space-around;
+            button {
+                margin-bottom: 10px;
+            }
+        }
+
+        img {
+            width: 120px;
+            height: 120px;
         }
 
         button {
             width: 80px;
-            height: 25%;
+            height: 40px;
             border: none;
             outline: none;
-            background-color: black;
+            background-color: #05732A;
             color: white;
             border-radius: 6px;
+            font-size: 1rem;
+        }
+        button:hover {
+            background-color: #04812E;
         }
     }
 
-    section {
+    .dashboardSection {
         margin-top: 35px;
-        border-bottom: 1px solid black;
+        border-bottom: 1px solid white;
+        color: white;
         
         h2 {
             margin-bottom: 40px;
@@ -49,7 +80,7 @@ export const DashBoardContainer = styled.div`
         }
     }
 
-    main {
+    .dashboardMain {
         margin-top: 50px;
         display: flex;
         flex-direction: column;
@@ -65,25 +96,28 @@ export const DashBoardContainer = styled.div`
             }
         }
 
-        button {
+        .dashboardMain--button {
             margin-left: 50px;
             margin-bottom: 40px;
 
             width: 150px;
-            height: 30px;
+            height: 40px;
 
             border: none;
             border-radius: 6px;
 
             outline: none;
-            background-color: #d3d3d3;
+            background-color: #05732A;
+            color: white;
 
+            font-size: 1rem;
         }
-        button:hover {
-            background-color: var(--color-light-green); 
+        .dashboardMain--button:hover {
+            background-color: #04812E; 
         }
         .cardsContainer {
-            background-color: var(--color-primary-dark);
+            background-color: #069c38;
+            color: white;
             margin: 0 auto;
 
             width: 70%;
