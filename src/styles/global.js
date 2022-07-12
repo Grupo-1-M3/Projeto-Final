@@ -17,6 +17,7 @@ button {
 a {
   text-decoration: none;
 }
+
 :root {
   --white: #FAFAFA;
   --color-primary: #f2e8c4;
@@ -29,6 +30,7 @@ a {
   --background-header-home: rgba(33, 33, 33, 0.98);
   --color-button-home: #282528;
   --color-button-home-hover: #2c8b9f;
+  --color-button-two: #3E3B3E;
   --background-footer: #000;
 
   --radius-inputs-buttons: 0.3rem;
