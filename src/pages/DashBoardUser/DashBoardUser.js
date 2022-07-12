@@ -1,43 +1,27 @@
 import React, { useEffect, useState } from "react";
+import { useUser } from "../../contexts/User";
+import { useProducts } from "../../contexts/Products";
+
 import Searchbar from "../../components/Searchbar";
-import { api } from "../../services/api";
+
 import { ContainerButton, Container, Card } from "./style";
-import { api } from "../../services/api";
+import { useHistory } from "react-router-dom";
 
 const DashBoard = () => {
+  const { user, accessToken } = useUser();
+  const { products, handleProduct } = useProducts();
+
   const [filterFood, setFilterFood] = useState([]);
-  const [food, setFood] = useState([]);
 
-  useEffect(() => {
-    async function getFood() {
-      const response = await api.get("660/products");
-    }
-  }, []);
+  const history = useHistory();
 
-  const foods = [
-    {
-      name: "lasanha",
-      price: 24,
-      img: "https://www.sabornamesa.com.br/media/k2/items/cache/13b5e0deaf19b06816d21e67ad4e211c_XL.jpg",
-      category: "Pizzas",
-    },
-    {
-      name: "panqueca",
-      price: 20,
-      img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTeU5kewe6oCECK8P7YxIfnoA_DOZ25T3F8Kw&usqp=CAU",
-      category: "Doces",
-    },
-    {
-      name: "spaghetti bolognese",
-      price: 19,
-      img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ3E3rJ3syIaR5nCTGtY7lt0U8FhvbQ29COHw&usqp=CAU",
-      category: "Panificadora",
-    },
-  ];
+  if (!accessToken) {
+    history.push("/");
+  }
 
   const handleSearch = (e) => {
     setFilterFood(
-      foods.filter(
+      products.filter(
         (elem) =>
           elem.name
             .toLowerCase()
@@ -58,7 +42,7 @@ const DashBoard = () => {
   };
 
   const filterByCategory = (categoria) => {
-    setFilterFood(foods.filter((food) => food.category === categoria));
+    setFilterFood(products.filter((food) => food.category === categoria));
   };
 
   return (
@@ -86,24 +70,29 @@ const DashBoard = () => {
           Pizzas
         </ContainerButton>
       </Container>
+      <div>
+        <p>Bem-vindo, {user?.name || ""}!</p>{" "}
+      </div>
       <Card>
-        {filterFood.length
-          ? filterFood.map((food) => (
-              <div key={food.name}>
-                <img src={food.img} alt={food.name} />
-                <h3>{food.name}</h3>
-                <span>{food.price}</span>
-                <p>{food.category}</p>
-              </div>
-            ))
-          : foods.map((food) => (
-              <div key={food.name}>
-                <img src={food.img} alt={food.name} />
-                <h3>{food.name}</h3>
-                <span>{food.price}</span>
-                <p>{food.category}</p>
-              </div>
-            ))}
+        <ul>
+          {filterFood.length
+            ? filterFood.map((food) => (
+                <div key={food.name}>
+                  <img src={food.img} alt={food.name} />
+                  <h3>{food.name}</h3>
+                  <span>{food.price}</span>
+                  <p>{food.category}</p>
+                </div>
+              ))
+            : products?.map((food) => (
+                <div key={food.name}>
+                  <img src={food.img} alt={food.name} />
+                  <h3>{food.name}</h3>
+                  <span>{food.price}</span>
+                  <p>{food.category}</p>
+                </div>
+              ))}
+        </ul>
       </Card>
     </div>
   );

@@ -22,8 +22,7 @@ export const ContainerButton = styled.button`
   padding: 0 0.5rem;
   width: 150px;
   margin-right: 8px;
-  overflow-x: scroll;
-  -ms-overflow-style: none;
+
   :hover {
     border: 1.5px solid var(--color-dark-green);
   }
