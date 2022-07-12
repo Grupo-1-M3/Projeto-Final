@@ -1,12 +1,10 @@
 import React from "react";
-import RegisterPJ from "./RegisterPJ";
+import RegisterPJ from "./RegisterPF(fake)";
 
 const Register = () => {
   return (
     <div>
       <RegisterPJ />
-      {/* 
-      <h1>Register page</h1> */}
     </div>
   );
 };
