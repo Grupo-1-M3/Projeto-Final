@@ -13,6 +13,8 @@ import {
 } from "@mui/material";
 import { MdOutlineMenu, MdSearch } from "react-icons/md";
 
+import { Search, SearchIconWrapper, StyledInputBase } from "./styles";
+
 import Logo from "../../assets/projectLogo.png";
 
 import { useHistory } from "react-router-dom";
@@ -123,7 +125,7 @@ const SearchNavBar = () => {
               </Button>
             ))}
           </Box>
-          {/* <Box>
+          <Box>
             <Search>
               <SearchIconWrapper>
                 <MdSearch color="#ededed" />
@@ -140,7 +142,7 @@ const SearchNavBar = () => {
                 inputProps={{ "aria-label": "search" }}
               />
             </Search>
-          </Box> */}
+          </Box>
         </Toolbar>
       </Container>
     </AppBar>
