@@ -23,14 +23,14 @@ export const SelectContainer = styled.div`
     `}
   select {
     padding: 4px;
-    background: var(--color-light-green);
-    color: var(--color-primary-dark);
+    background: var(--background-header-home);
+    color: var(--white);
     font-weight: 600;
 
-    border: 1px solid var(--color-light-green);
+    border: 1px solid var(--color-primary-dark);
     border-radius: 4px;
 
-    width: 259.9px;
+    width: 264.66px;
     height: 38.5px;
 
     &::placeholder {

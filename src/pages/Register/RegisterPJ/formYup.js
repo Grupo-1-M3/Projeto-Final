@@ -6,13 +6,13 @@ const validateLowerCase = "^(?=.*[a-z])";
 const formSchema = yup.object().shape({
   name: yup
     .string()
-    .required("Campo obrigatório!")
+    .required("Obrigatório")
     .matches(validateUpperCase, "Digite apenas letras")
     .matches(validateLowerCase, "Digite apenas letras"),
-  email: yup.string().email("E-mail inválido").required("Campo obrigatório!"),
+  email: yup.string().email("E-mail inválido").required("Obrigatório"),
   password: yup
     .string()
-    .required("Campo obrigatório!")
+    .required("Obrigatória")
     .min(8, "Senha incompativel: mínimo 8 caracteres")
     .matches(
       "^(?=.*[a-z])(?=.*[A-Z])(?=.*[!#@$%&])(?=.*[0-9])",
@@ -20,12 +20,12 @@ const formSchema = yup.object().shape({
     ),
   confirmPassword: yup
     .string()
-    .required("Campo obrigatório!")
+    .required("Obrigatória")
     .oneOf([yup.ref("password"), null], "Senhas não conferem"),
-  cnpj: yup.string().required("Campo obrigatório!"),
-  category: yup.string().required("Campo obrigatório!"),
-  phone: yup.string().required("Campo Obrigatório"),
-  address: yup.string().required("Campo Obrigatório"),
+  cnpj: yup.string().required("Obrigatório"),
+  category: yup.string().required("Obrigatória"),
+  phone: yup.string().required("Obrigatório"),
+  address: yup.string().required("Obrigatório"),
 });
 
 export default formSchema;
