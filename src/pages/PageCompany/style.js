@@ -4,11 +4,9 @@ import styled from "styled-components"
 export const Container = styled.div`
 
     color: var(--white);
-
-    max-width: 1400px;
+    max-width: 1496px;
     width: 100%;
-    margin: 0 auto;
-    
+
     .divLogo {
         position: relative;
         display: flex;
@@ -41,6 +39,28 @@ export const Container = styled.div`
             font-weight: bold;
             font-size: 22px;
         }
+    }
+
+    .telaLoad {
+        height: 100vh;
+        width: 100%;
+        background: var(--color-box-shadow);
+        z-index: 2000;
+        position: fixed;
+        backdrop-filter: blur(2px);
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        
+        p {
+            font-size: 28px;
+            color: var(--white);
+        }
+    }
+
+    @media (min-width: 2000px) {
+        margin: 0 auto;
     }
 `
 
@@ -79,12 +99,16 @@ export const HeaderStyled = styled.div`
         padding-bottom: 10px;
     }
 
-    div > select {
+    div > section {
         width: 78px;
         height: 32px;
         border-radius: 5px;
-
-        padding: 0 3px;
+        
+        align-items: center;
+        display: flex;
+        justify-content: center;
+        
+        padding: 0 5px;
         color: var(--color-select-company);
         
         border: 1px solid var(--background-button-company);

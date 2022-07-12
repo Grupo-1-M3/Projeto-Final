@@ -6,41 +6,73 @@ import star_yellow from "../../assets/star_yellow.png"
 import logo from "../../assets/logo.png"
 import { api } from "../../services/api"
 import Product from "../../components/Product";
+import { useEffect } from "react";
 
 
 const PageCompany = () => {
 
   const [ company, setCompany ] = useState({})
 
+  const [ load, setLoad ] = useState(true)
+
   const [ products, setProducts ] = useState([])
 
-  const array = [ 
-    Math.floor((Math.random() * 2) + 1),
-    Math.floor((Math.random() * 2) + 1),
-    Math.floor((Math.random() * 2) + 1),
-    Math.floor((Math.random() * 2) + 1),
-    Math.floor((Math.random() * 2) + 1),
-    Math.floor((Math.random() * 2) + 1)
-  ]
+  useEffect(() => {
 
-  api.get("users/1", {
-    headers: {
-      "Content-Type": "application/json",
-      "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InJvZHJpZ29AZ2FtaWwuY29tIiwiaWF0IjoxNjU3NTQ4NzM1LCJleHAiOjE2NTc1NTIzMzUsInN1YiI6IjEifQ.cCJYh0CC5Bs_iz33qjTWw-2dRpRmzWMMzwrTh38C0pk"  
-    }
-  })
-  .then(res => setCompany(res.data))
+    setLoad(true)
 
-  api.get("users/1?_embed=products", {
-    headers: {
-      "Content-Type": "application/json",
-      "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InJvZHJpZ29AZ2FtaWwuY29tIiwiaWF0IjoxNjU3NTQ4NzM1LCJleHAiOjE2NTc1NTIzMzUsInN1YiI6IjEifQ.cCJYh0CC5Bs_iz33qjTWw-2dRpRmzWMMzwrTh38C0pk"  
+    api.get("users/2", {
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InJvZHJpZ29AZ21haWwuY29tIiwiaWF0IjoxNjU3NjM5ODA1LCJleHAiOjE2NTc2NDM0MDUsInN1YiI6IjIifQ.AnoMP4Ye2xD1PRsR5ikwWk3SnCZ9b751VYDd00f-zCk"  
+      }
+    })
+    .then(res => setCompany(res.data))
+    .finally(() => setLoad(false))
+  
+  }, [])
+  
+  const funcImage = () => {
+    
+    for(let i = 0; i < 6; i++) {
+
+      if(company.star <= i) {
+
+        <img src={ star_yellow } alt="star" />
+      } 
+      else {
+
+        <img src={ star } alt="star" />
+      }
     }
-  })
-  .then(res => setProducts(res.data.products))
+  }
+
+  useEffect(() => {
+
+    setLoad(true)
+
+    api.get("users/2?_embed=products", {
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InJvZHJpZ29AZ21haWwuY29tIiwiaWF0IjoxNjU3NjM5ODA1LCJleHAiOjE2NTc2NDM0MDUsInN1YiI6IjIifQ.AnoMP4Ye2xD1PRsR5ikwWk3SnCZ9b751VYDd00f-zCk"  
+      }
+    })
+    .then(res => setProducts(res.data.products))
+    .finally(() => setLoad(false))
+
+  }, [])
 
   return (
-    <Container>
+    
+      <Container>
+
+      {
+        load === true && (
+          <div className="telaLoad">
+            <p>Loading...</p>
+          </div>
+        )
+      }
 
       <div className="divLogo">
         <img src={ logo } alt="Logo" />
@@ -57,18 +89,16 @@ const PageCompany = () => {
 
             <img src={ bolinha } alt="bolinha" />
 
-            0,9km</p>
+            { company.km }km</p>
           </div>
 
-          <select>
-            <option>Entrega</option>
-          </select>
+          <section>Entrega</section>
 
           <div className="div">
-            <p>4,1</p>
+            <p>{ company.star }</p>
             
             {
-              array.map(x => <img src={ star_yellow } alt="star" />)
+              () => funcImage()
             }
           </div>
         </div>
@@ -76,7 +106,7 @@ const PageCompany = () => {
         <div className="divBanner">
           <img src={ company.img } alt={ company.name } />
 
-          <p>781 avaliações</p>
+          <p>{ company.reviews } avaliações</p>
         </div>
       </HeaderStyled>
 
@@ -90,7 +120,7 @@ const PageCompany = () => {
         </div>
       </Content>
     </Container>
-  );
-};
+  )
+}
 
-export default PageCompany;
+export default PageCompany
