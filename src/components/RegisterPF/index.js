@@ -89,7 +89,7 @@ const RegisterPF = ({ authenticated }) => {
     minLength: 8,
     errorText: {
       required: "Senha Obrigatória",
-    }
+    },
   });
   const confirmPassword = useInput({
     name: "confirmPassword",
@@ -201,7 +201,9 @@ const RegisterPF = ({ authenticated }) => {
     <form onSubmit={form.handleSubmit}>
       {form.step === 0 && (
         <Container>
-          <Button type="button" onClick={handleNavigation}>Voltar</Button>
+          <Button type="button" onClick={handleNavigation}>
+            Voltar
+          </Button>
 
           <Form>
             <h1>TrashNoFood</h1>
@@ -224,7 +226,9 @@ const RegisterPF = ({ authenticated }) => {
             />
 
             <Input
-              label={birth_date?.error ? birth_date.error : "Data de nascimento"}
+              label={
+                birth_date?.error ? birth_date.error : "Data de nascimento"
+              }
               placeholder="Data"
               name="birth_date"
               {...birth_date.inputProps}
@@ -236,16 +240,16 @@ const RegisterPF = ({ authenticated }) => {
               name="phone"
               {...phone.inputProps}
               error={phone?.error}
-            />            
-            
-            <Input
-            label="Email"
-            placeholder="Email"
-            name="email"
-            {...email.inputProps}
-            error={email?.error}
             />
-            
+
+            <Input
+              label="Email"
+              placeholder="Email"
+              name="email"
+              {...email.inputProps}
+              error={email?.error}
+            />
+
             <Input
               label={password?.error ? password.error : "Senha"}
               placeholder="Digite aqui sua senha"
@@ -253,16 +257,20 @@ const RegisterPF = ({ authenticated }) => {
               type="password"
               {...password.inputProps}
             />
-            
+
             <Input
-              label={confirmPassword?.error ? confirmPassword.error : "Confirmação de Senha"}
+              label={
+                confirmPassword?.error
+                  ? confirmPassword.error
+                  : "Confirmação de Senha"
+              }
               placeholder="Digite novamente sua senha"
               name="confirmPassword"
               type="password"
               {...confirmPassword.inputProps}
             />
 
-            <button type="button" onClick={form.nextStep}>
+            <button type="submit" onClick={form.nextStep}>
               Proximo Passo
             </button>
           </Form>
@@ -271,7 +279,9 @@ const RegisterPF = ({ authenticated }) => {
 
       {form.step === 1 && (
         <Container>
-          <Button type="button" onClick={form.previousStep}>Passo anterior</Button>
+          <Button type="button" onClick={form.previousStep}>
+            Passo anterior
+          </Button>
           <Form>
             <h1>TrashNoFood</h1>
             <p>Segunda Etapa</p>
@@ -282,29 +292,29 @@ const RegisterPF = ({ authenticated }) => {
               name="road"
               {...road.inputProps}
               error={road?.error}
-            /> 
-            
+            />
+
             <Input
               label="Complemento"
               placeholder="Quadra xx, esquina com a..."
               name="complement"
               {...complement.inputProps}
-            /> 
+            />
 
             <Input
               label="Bairro"
               placeholder="Digite seu bairro"
               name="district"
               {...district.inputProps}
-            /> 
-            
+            />
+
             <Input
               label="Cidade"
               placeholder="Digite sua cidade"
               name="city"
               {...city.inputProps}
               error={city?.error}
-            /> 
+            />
 
             <Input
               label="Estado"
@@ -312,16 +322,16 @@ const RegisterPF = ({ authenticated }) => {
               name="stateCity"
               {...stateCity.inputProps}
               error={stateCity?.error}
-            /> 
+            />
 
             <Input
               label="CEP"
               placeholder="Digite o CEP"
               name="zip"
               {...zip.inputProps}
-            /> 
+            />
 
-            <button type="submit" >Cadastrar</button>
+            <button type="submit">Cadastrar</button>
           </Form>
         </Container>
       )}
