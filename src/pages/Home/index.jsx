@@ -20,7 +20,7 @@ import { Pagination, Autoplay } from "swiper";
 import { useHistory } from "react-router-dom";
 import { api } from "../../services/api";
 
-import SearchNavBar from "../../components/SearchNavBar";
+import NavBar from "../../components/NavBar";
 
 const Home = () => {
   const history = useHistory();
@@ -43,7 +43,7 @@ const Home = () => {
 
   return (
     <>
-      <SearchNavBar />
+      <NavBar />
       <Content>
         <div>
           <h1>#1 DO BRASIL CONTRA O DESPERDÍCIO DE ALIMENTOS.</h1>
