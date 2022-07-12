@@ -28,14 +28,22 @@ const DashBoard = () => {
 
   const handleSearch = (e) => {
     setFilterFood(
-      foods.filter((elem) =>
-        elem.name
-          .toLowerCase()
-          .replace(/[\u0300-\u036f]/g, "")
-          .replace(/ /g, "")
-          .replace(/[^0-9a-zA-Z]/g, "")
-          .normalize("NFD")
-          .includes(e.target.value.toLowerCase())
+      foods.filter(
+        (elem) =>
+          elem.name
+            .toLowerCase()
+            .replace(/[\u0300-\u036f]/g, "")
+            .replace(/ /g, "")
+            .replace(/[^0-9a-zA-Z]/g, "")
+            .normalize("NFD")
+            .includes(e.target.value.toLowerCase()) ||
+          elem.category
+            .toLowerCase()
+            .replace(/[\u0300-\u036f]/g, "")
+            .replace(/ /g, "")
+            .replace(/[^0-9a-zA-Z]/g, "")
+            .normalize("NFD")
+            .includes(e.target.value.toLowerCase())
       )
     );
   };
