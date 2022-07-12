@@ -50,6 +50,7 @@ export const Container = styled.div`
 
     .product {
         
+        cursor: pointer;
         background: var(--background-header-home);
         width: 350px;
         height: 260px;
