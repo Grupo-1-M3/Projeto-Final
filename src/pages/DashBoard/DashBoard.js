@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+/* import React, { useState } from "react";
 import Searchbar from "../../components/Searchbar";
 import { ContainerButton, Container, Card } from "./style";
 
@@ -101,3 +101,4 @@ const DashBoard = () => {
 };
 
 export default DashBoard;
+ */
