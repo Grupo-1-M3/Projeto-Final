@@ -12,7 +12,7 @@ import { api } from "../../services/api";
 
 import { Container, Form, ContainerMessage } from "./style";
 import Input from "../../components/Input";
-import { motion } from "framer-motion"
+import { motion } from "framer-motion";
 
 const LoginPartiner = () => {
   const [auth, setAuth] = useState(false);
@@ -58,13 +58,13 @@ const LoginPartiner = () => {
 
   return (
     <Container>
-      <motion.div 
+      <motion.div
         initial={{ x: 1100 }}
         animate={{ x: 0 }}
         transition={{ duration: 0.5 }}
       >
         <Form onSubmit={handleSubmit(handleLogin)}>
-          <h1>Login</h1>
+          <h1>Login de Parceiros</h1>
           <Input
             register={register}
             name="email"
@@ -84,7 +84,10 @@ const LoginPartiner = () => {
           <ContainerMessage>
             <strong>Ainda não possui uma conta parceira?</strong>
           </ContainerMessage>
-          <button type="button" onClick={() => history.push("/registerPartiner")}>
+          <button
+            type="button"
+            onClick={() => history.push("/registerPartiner")}
+          >
             Cadastre-se
           </button>
         </Form>

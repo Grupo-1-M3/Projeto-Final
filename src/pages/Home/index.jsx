@@ -1,6 +1,5 @@
 import React, { useState } from "react";
-import { HeaderStyled, Container, Content, FooterStyled } from "./style";
-import Logo from "../../assets/logo.png";
+import { Container, Content, FooterStyled } from "./style";
 
 import Principal from "../../assets/foto_principal.png";
 import Ifood from "../../assets/ifood.png";
@@ -21,7 +20,6 @@ import { useHistory } from "react-router-dom";
 import { api } from "../../services/api";
 
 import NavBar from "../../components/NavBar";
-import { motion } from "framer-motion"
 
 const Home = () => {
   const history = useHistory();
@@ -44,105 +42,86 @@ const Home = () => {
 
   return (
     <>
-      <motion.div
-        initial={{ x: -1200}}
-        animate={{x: 0}}
-        transition={{duration: 0.5}}
-      >
-        <NavBar />
-      </motion.div>
+      <NavBar />
 
-      <motion.div
-        initial={{ scale: 0.3}}
-        animate={{ scale: 1}}
-        transition={{duration: 0.7}}
-      >
-        <Content>
+      <Content>
+        <div>
+          <h1>#1 DO BRASIL CONTRA O DESPERDÍCIO DE ALIMENTOS.</h1>
+
+          <p>
+            Salve alimentos de
+            <strong> restaurantes, panificadoras e mercados, </strong>
+            descontos
+            <strong> a partir de 50%</strong>, e faça parte deste movimento
+            sustentável que combate o<strong> desperdício de alimentos.</strong>
+          </p>
+
           <div>
-            <h1>#1 DO BRASIL CONTRA O DESPERDÍCIO DE ALIMENTOS.</h1>
-
-            <p>
-              Salve alimentos de
-              <strong> restaurantes, padarias e hortifrutis </strong>
-              com até
-              <strong> 70% de desconto</strong>, e faça parte deste movimento
-              sustentável que combate o<strong> desperdício de alimentos.</strong>
-            </p>
-
-            <div>
-              <button onClick={() => history.push("/login")}>Compre já</button>
-              <button onClick={() => history.push("/loginPartiner")}>
-                Seja parceiro
-              </button>
-            </div>
+            <button onClick={() => history.push("/login")}>Compre já</button>
+            <button onClick={() => history.push("/loginPartiner")}>
+              Seja parceiro
+            </button>
           </div>
+        </div>
 
-          <img src={Principal} alt="" />
-        </Content>
-      </motion.div>
+        <img src={Principal} alt="" />
+      </Content>
 
+      <Container>
+        <h2>Produtos com maiores descontos hoje</h2>
 
-      <motion.div
-        initial={{ y: 1000 }}
-        animate={{ y: 0 }}
-        transition={{ duration: 0.7}}
-      >
-        <Container>
-          <h2>Produtos com maiores descontos hoje</h2>
+        <div className="content">
+          {products.map((product) => {
+            const desconto =
+              product.price - (product.price * product.discont) / 100;
 
-          <div className="content">
-            {products.map((product) => {
-              const desconto =
-                product.price - (product.price * product.discont) / 100;
+            return (
+              <div className="product" onClick={() => history.push("/login")}>
+                <img src={product.img} alt={product.name} />
+                <span>{product.discont}% OFF</span>
+                <div>
+                  <h3>{product.name}</h3>
 
-              return (
-                <div className="product" onClick={() => history.push("/login")}>
-                  <img src={product.img} alt={product.name} />
-                  <span>{product.discont}% OFF</span>
+                  <p>Data de vencimento: {product.validity}</p>
+
                   <div>
-                    <h3>{product.name}</h3>
-
-                    <p>Data de vencimento: {product.validity}</p>
-
-                    <div>
-                      <span>R$ {desconto.toFixed(2).replace(".", ",")}</span>
-                      <span>
-                        R$ <s>{product.price.toFixed(2).replace(".", ",")}</s>
-                      </span>
-                    </div>
+                    <span>R$ {desconto.toFixed(2).replace(".", ",")}</span>
+                    <span>
+                      R$ <s>{product.price.toFixed(2).replace(".", ",")}</s>
+                    </span>
                   </div>
                 </div>
-              );
-            })}
-          </div>
+              </div>
+            );
+          })}
+        </div>
 
-          <div className="verMais">
-            <button onClick={() => history.push("/login")}>Ver mais</button>
-          </div>
-          
-          <h2>APOIADORES</h2>
+        <div className="verMais">
+          <button onClick={() => history.push("/login")}>Ver mais</button>
+        </div>
 
-          <div>
-            <Swiper
-              loop={true}
-              grabCursor={true}
-              pagination={true}
-              autoplay={{
-                delay: 2500,
-                disableOnInteraction: false,
-              }}
-              modules={[Pagination, Autoplay]}
-              className="mySwiper"
-            >
-              {companys.map((company, i) => (
-                <SwiperSlide key={i}>
-                  <img src={company} alt="Empresa parceira" />
-                </SwiperSlide>
-              ))}
-            </Swiper>
-          </div>
-        </Container>
-      </motion.div>
+        <h2>APOIADORES</h2>
+
+        <div>
+          <Swiper
+            loop={true}
+            grabCursor={true}
+            pagination={true}
+            autoplay={{
+              delay: 2500,
+              disableOnInteraction: false,
+            }}
+            modules={[Pagination, Autoplay]}
+            className="mySwiper"
+          >
+            {companys.map((company, i) => (
+              <SwiperSlide key={i}>
+                <img src={company} alt="Empresa parceira" />
+              </SwiperSlide>
+            ))}
+          </Swiper>
+        </div>
+      </Container>
 
       <FooterStyled>
         <div>
