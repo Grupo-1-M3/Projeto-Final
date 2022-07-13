@@ -39,7 +39,7 @@ const RegisterPJ = ({ authenticated }) => {
       .post("/register", user)
       .then((_) => {
         toast.success("Parabéns, conta criada com sucesso!");
-        return history.push("/login");
+        return history.push("/loginPartiner");
       })
       .catch((_) => toast.error("Erro ao criar a conta, e-mail já cadastrado"));
     reset();
@@ -50,11 +50,10 @@ const RegisterPJ = ({ authenticated }) => {
 
   return (
     <Container>
-
       <motion.div
-        initial={{scale: 0}}
-        animate={{ scale: 1}}
-        transition= {{duration: 0.5}}
+        initial={{ scale: 0 }}
+        animate={{ scale: 1 }}
+        transition={{ duration: 0.5 }}
       >
         <Button onClick={handleNavigation}>Voltar</Button>
         <Form onSubmit={handleSubmit(onSubmitFunction)}>
