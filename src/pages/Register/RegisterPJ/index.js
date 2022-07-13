@@ -11,8 +11,31 @@ import { api } from "../../../services/api";
 import { toast } from "react-toastify";
 import Options from "../../../components/Select/Option";
 import { motion } from "framer-motion";
+import { useState } from "react";
 
 const RegisterPJ = ({ authenticated }) => {
+  const [cnpj, setCNPJ] = useState("");
+  const [phone, setPhone] = useState("");
+
+  const maskCNPJ = (value) => {
+    return value
+      .replace(/\D/g, "")
+      .replace(/(\d{2})(\d)/, "$1.$2")
+      .replace(/(\d{3})(\d)/, "$1.$2")
+      .replace(/(\d{3})(\d{1,2})/, "$1/$2")
+      .replace(/(\d{4})(\d)/, "$1-$2")
+      .replace(/(-\d{2})\d+?$/, "$1");
+  };
+
+  const maskPhone = (value) => {
+    return value
+      .replace(/\D/g, "")
+      .replace(/(\d{2})(\d)/, "($1) $2")
+      .replace(/(\d{5})(\d)/, "$1-$2")
+      .replace(/(-\d{4})(\d+?)$/, "$1");
+  };
+  
+
   const {
     register,
     handleSubmit,
@@ -68,16 +91,19 @@ const RegisterPJ = ({ authenticated }) => {
             error={errors.name?.message}
           />
           <Input
-            type="number"
+            value={cnpj}
+            onChange={(e) => setCNPJ(maskCNPJ(e.target.value))}
+            placeholder="CNPJ: 00.000.000/0001-00"
             label="CNPJ"
-            placeholder="Digite aqui seu CNPJ"
             name="cnpj"
             register={register}
             error={errors.cnpj?.message}
           />
           <Input
+            value={phone}
+            onChange={(e) => setPhone(maskPhone(e.target.value))}
+            placeholder="Telefone (00) 00000-0000"
             label="Contato"
-            placeholder="Digite aqui seu telefone para contao"
             name="phone"
             register={register}
             error={errors.phone?.message}
