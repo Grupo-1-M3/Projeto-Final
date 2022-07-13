@@ -53,6 +53,7 @@ const DashBoard = () => {
 
   return (
     <div>
+      <SearchNavBar handleSearch={handleSearch} />
       <ContentContainer>
         {/* <div className="vitrineHeader">
           <img src={logo} alt="Trash No Food" className="vitrineLogo" />
@@ -63,7 +64,6 @@ const DashBoard = () => {
             />
           </form>
         </div> */}
-        <SearchNavBar handleSearch={handleSearch} />
         <Container>
           <div className="vitrineFiltro">
             <ContainerButton onClick={() => filterByCategory("")}>
