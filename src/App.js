@@ -2,11 +2,13 @@ import { GlobalStyle } from "./styles/global";
 import Routes from "./routes";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import About from "./pages/About";
 
 function App() {
   return (
     <div className="App">
-      <GlobalStyle />
+      <About/>
+      {/* <GlobalStyle />
       <Routes />
 
       <ToastContainer
@@ -19,7 +21,7 @@ function App() {
         pauseOnFocusLoss
         draggable
         pauseOnHover
-      />
+      /> */}
     </div>
   );
 }
