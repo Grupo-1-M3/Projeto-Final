@@ -8,6 +8,7 @@ import RegisterPartiner from "../pages/Register/RegisterPartiner";
 import Cart from "../pages/Cart/Cart";
 import Register from "../pages/Register/Register";
 import LoginPartiner from "../pages/LoginPartiner/Login";
+import Contato from "../pages/Contato";
 import Blog from "../pages/Blog";
 
 const Routes = () => {
@@ -39,6 +40,10 @@ const Routes = () => {
       <Route exact path={"/cart"}>
         <Cart />
       </Route>
+
+      <Route exact path={"/contato"}>
+        <Contato />
+       </Route>
       <Route exact path={"/blog"}>
         <Blog />
       </Route>

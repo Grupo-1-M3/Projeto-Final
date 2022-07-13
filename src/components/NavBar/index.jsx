@@ -46,7 +46,7 @@ const NavBar = () => {
           "linear-gradient(var(--background-header-home), var(--background-home))",
         boxShadow: "0 4px 30px rgba(0, 0, 0, 0.1)",
         backdropFilter: "blur(5px)",
-        WebkitBackdropFilter: "blur(5px)",
+        WebkitBackdropFilter: "blur(5px)"
       }}
     >
       <Container maxWidth="xl">
