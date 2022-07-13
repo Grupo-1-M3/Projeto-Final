@@ -19,6 +19,8 @@ const RegisterPF = ({ authenticated }) => {
   });
   const cpf = useInput({
     name: "cpf",
+    mask: "cpf",
+    maxLength: 14,
     errorText: {
       required: "Obrigatório",
     },
@@ -75,6 +77,8 @@ const RegisterPF = ({ authenticated }) => {
   });
   const phone = useInput({
     name: "phone",
+    mask: "telefone",
+    maxLength: 15,
     errorText: {
       required: "Obrigatório",
     },
@@ -128,6 +132,8 @@ const RegisterPF = ({ authenticated }) => {
   });
   const zip = useInput({
     name: "zip",
+    mask: "cep",
+    maxLength: 9,
     optional: true,
   });
 
