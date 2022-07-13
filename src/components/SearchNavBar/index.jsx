@@ -29,7 +29,6 @@ const pages = [
   { text: "Quem somos", route: "about" },
   { text: "Contato", route: "contato" },
   { text: "Blog", route: "blog" },
-  {text: "Vitrine", route: "vitrine"}
 ];
 
 const SearchNavBar = ({ isCart = false, handleSearch }) => {
@@ -62,7 +61,7 @@ const SearchNavBar = ({ isCart = false, handleSearch }) => {
         WebkitBackdropFilter: "blur(5px)",
       }}
     >
-      <Container maxWidth="xl">
+      <Container maxWidth="lg">
         <Toolbar disableGutters>
           <Avatar
             alt="Logo"
@@ -194,7 +193,8 @@ const SearchNavBar = ({ isCart = false, handleSearch }) => {
                   }}
                   placeholder="Search…"
                   inputProps={{ "aria-label": "search" }}
-                  onChange={handleSearch}/>
+                  onChange={handleSearch}
+                />
               </Search>
             </Box>
           )}

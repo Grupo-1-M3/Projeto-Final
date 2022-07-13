@@ -9,13 +9,11 @@ import { yupResolver } from "@hookform/resolvers/yup";
 
 import schema from "./formYup";
 import { api } from "../../services/api";
-put from "../../components/Input";
 
 import Button from "../../components/Button";
 import { Container, Form, ContainerMessage } from "./style";
 import Input from "../../components/Input";
 import { motion } from "framer-motion";
-
 
 const Login = () => {
   const [auth, setAuth] = useState(false);
@@ -40,7 +38,6 @@ const Login = () => {
 
   if (auth) {
     return <Redirect to="/vitrine" />;
-
   }
 
   const handleLogin = async (data) => {
@@ -59,12 +56,10 @@ const Login = () => {
     setAuth(true);
 
     history.push("/vitrine");
-
   };
 
   return (
     <Container>
-
       <motion.div
         initial={{ x: -1200 }}
         animate={{ x: 0 }}
@@ -97,7 +92,6 @@ const Login = () => {
           </button>
         </Form>
       </motion.div>
-
     </Container>
   );
 };
