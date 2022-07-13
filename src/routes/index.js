@@ -3,7 +3,7 @@ import { Switch, Route } from "react-router-dom";
 import Vitrine from "../pages/Vitrine/Vitrine";
 import DashBoardPJ from "../pages/DashBoard/index";
 import Home from "../pages/Home";
-import Login from "../pages/Login/Login";
+import Login from "../pages/Login/index";
 import RegisterPartiner from "../pages/Register/RegisterPartiner";
 import Cart from "../pages/Cart/Cart";
 import Register from "../pages/Register/Register";
