@@ -3,13 +3,18 @@ import { ContainerCart, ContainerWarning } from "./style";
 import ProductCard from "../../components/ProductCart";
 import { CartContext } from "../../contexts/Cart";
 import Total from "../../components/Total";
-import Header from "../../components/Header";
-import HomeTeste from "../PaginaTest";
 import SearchNavBar from "../../components/SearchNavBar";
+import { useHistory } from "react-router-dom";
+import Button from "../../components/Button";
 
 const Cart = () => {
   const { productsOnCart, setProductsOnCart } = useContext(CartContext);
   const [total, setTotal] = useState(0);
+
+  const history = useHistory();
+  const continueOrder = () => {
+    history.push("/vitrine");
+  };
 
   useEffect(() => {
     setTotal(
@@ -30,7 +35,6 @@ const Cart = () => {
     <>
       <SearchNavBar isCart />
       <ContainerCart>
-        {/*  <HomeTeste /> */}
         <div>
           {productsOnCart.length > 0 ? (
             <>
@@ -47,6 +51,7 @@ const Cart = () => {
                 <ProductCard key={i} product={product} isRemovable={true} />
               ))}
               <h1>Ops não tem nada aqui!</h1>
+              <Button onClick={continueOrder}>Começar a Comprar!</Button>
             </ContainerWarning>
           )}
         </div>
