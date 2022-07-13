@@ -59,7 +59,14 @@ export const ContainerWarning = styled.section`
   width: 100%;
   margin-top: 200px;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   color: #0bda51;
+
+  button {
+    margin-top: 10px;
+    margin-left: 0px;
+    width: 159px;
+  }
 `;

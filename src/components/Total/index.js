@@ -9,6 +9,9 @@ const Total = ({ total }) => {
   const { clearStore } = useContext(CartContext);
 
   const history = useHistory();
+  const continueOrder = () => {
+    history.push("/vitrine");
+  };
   const finishOrder = () => {
     history.push("/");
     clearStore();
@@ -22,6 +25,7 @@ const Total = ({ total }) => {
         <p>Valor Total R$ {total.toFixed(2)}</p>
       </section>
       <button onClick={finishOrder}>Finalizar Pedido</button>
+      <button onClick={continueOrder}>Continuar Comprando</button>
     </ContainerTotal>
   );
 };
