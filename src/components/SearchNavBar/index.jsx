@@ -25,11 +25,10 @@ import { useState } from "react";
 import { CartContext } from "../../contexts/Cart";
 
 const pages = [
-  { text: "Home", route: "/" },
+  { text: "Home", route: "/vitrine" },
   { text: "Quem somos", route: "about" },
   { text: "Contato", route: "contato" },
   { text: "Blog", route: "blog" },
-  {text: "Vitrine", route: "vitrine"}
 ];
 
 const SearchNavBar = ({ isCart = false, handleSearch }) => {
@@ -194,7 +193,8 @@ const SearchNavBar = ({ isCart = false, handleSearch }) => {
                   }}
                   placeholder="Search…"
                   inputProps={{ "aria-label": "search" }}
-                  onChange={handleSearch}/>
+                  onChange={handleSearch}
+                />
               </Search>
             </Box>
           )}
