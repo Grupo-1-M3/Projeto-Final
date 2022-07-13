@@ -1,4 +1,4 @@
-import styled, { createGlobalStyle } from 'styled-components';
+import { createGlobalStyle } from "styled-components";
 
 export const GlobalStyle = createGlobalStyle`
 * {
@@ -70,4 +70,4 @@ a {
     -webkit-align-items: center;
     align-items: center;
   }
-`
+`;
