@@ -42,7 +42,8 @@ const NavBar = () => {
       position="static"
       color="transparent"
       sx={{
-        background: "linear-gradient(var(--background-header-home), var(--background-home))",
+        background:
+          "linear-gradient(var(--background-header-home), var(--background-home))",
         boxShadow: "0 4px 30px rgba(0, 0, 0, 0.1)",
         backdropFilter: "blur(5px)",
         WebkitBackdropFilter: "blur(5px)"
@@ -56,7 +57,7 @@ const NavBar = () => {
             sx={{ width: 56, height: 56, display: { xs: "none", md: "flex" } }}
           />
 
-          <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" }, }}>
+          <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
             <IconButton
               size="large"
               aria-label="account of current user"
@@ -88,9 +89,9 @@ const NavBar = () => {
               {pages.map((page) => (
                 <MenuItem
                   key={page.text}
-                  onClick={() => console.log(page.route)}
+                  onClick={() => history.push(`${page.route}`)}
                 >
-                  <Typography textAlign="center" sx={{ color: "primary", }}>
+                  <Typography textAlign="center" sx={{ color: "primary" }}>
                     {page.text}
                   </Typography>
                 </MenuItem>
@@ -115,8 +116,8 @@ const NavBar = () => {
             {pages.map((page) => (
               <Button
                 key={page.text}
-                onClick={handleCloseNavMenu}
-                sx={{ my: 2, color: "white", display: "block", }}
+                onClick={() => history.push(`${page.route}`)}
+                sx={{ my: 2, color: "white", display: "block" }}
               >
                 {page.text}
               </Button>
