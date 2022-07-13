@@ -58,6 +58,7 @@ export const Form = styled.form`
 
     width: 264.66px;
     height: 38.5px;
+    text-align: left;
 
     &::placeholder {
       color: var(--white);

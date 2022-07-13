@@ -9,9 +9,13 @@ import { yupResolver } from "@hookform/resolvers/yup";
 
 import schema from "./formYup";
 import { api } from "../../services/api";
+put from "../../components/Input";
 
+import Button from "../../components/Button";
 import { Container, Form, ContainerMessage } from "./style";
 import Input from "../../components/Input";
+import { motion } from "framer-motion";
+
 
 const Login = () => {
   const [auth, setAuth] = useState(false);
@@ -36,6 +40,7 @@ const Login = () => {
 
   if (auth) {
     return <Redirect to="/vitrine" />;
+
   }
 
   const handleLogin = async (data) => {
@@ -52,36 +57,47 @@ const Login = () => {
     toast.success("Login feito");
 
     setAuth(true);
+
     history.push("/vitrine");
+
   };
 
   return (
     <Container>
-      <Form onSubmit={handleSubmit(handleLogin)}>
-        <h1>Login</h1>
-        <Input
-          register={register}
-          name="email"
-          label="Email"
-          placeholder="Digite aqui seu email"
-          error={errors.email?.message}
-        />
-        <Input
-          register={register}
-          name="password"
-          label="Senha"
-          type="password"
-          placeholder="Digite aqui sua senha"
-          error={errors.password?.message}
-        />
-        <button type="submit">Entrar</button>
-        <ContainerMessage>
-          <strong>Ainda não possui uma conta?</strong>
-        </ContainerMessage>
-        <button type="button" onClick={() => history.push("/register")}>
-          Cadastre-se
-        </button>
-      </Form>
+
+      <motion.div
+        initial={{ x: -1200 }}
+        animate={{ x: 0 }}
+        transition={{ duration: 0.5 }}
+      >
+        <Button onClick={() => history.push("/")}> Voltar </Button>
+        <Form onSubmit={handleSubmit(handleLogin)}>
+          <h1>Login de Usuário</h1>
+          <Input
+            register={register}
+            name="email"
+            label="Email"
+            placeholder="Digite aqui seu email"
+            error={errors.email?.message}
+          />
+          <Input
+            register={register}
+            name="password"
+            label="Senha"
+            type="password"
+            placeholder="Digite aqui sua senha"
+            error={errors.password?.message}
+          />
+          <button type="submit">Entrar</button>
+          <ContainerMessage>
+            <strong>Ainda não possui uma conta?</strong>
+          </ContainerMessage>
+          <button type="button" onClick={() => history.push("/register")}>
+            Cadastre-se
+          </button>
+        </Form>
+      </motion.div>
+
     </Container>
   );
 };

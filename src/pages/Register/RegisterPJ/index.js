@@ -10,6 +10,7 @@ import { useForm } from "react-hook-form";
 import { api } from "../../../services/api";
 import { toast } from "react-toastify";
 import Options from "../../../components/Select/Option";
+import { motion } from "framer-motion";
 
 const RegisterPJ = ({ authenticated }) => {
   const {
@@ -49,75 +50,82 @@ const RegisterPJ = ({ authenticated }) => {
 
   return (
     <Container>
-      <Button onClick={handleNavigation}>Voltar</Button>
-      <Form onSubmit={handleSubmit(onSubmitFunction)}>
-        <h1>Crie a sua conta</h1>
-        <h3>Pessoa Jurídica</h3>
-        <Input
-          label="Razão Social"
-          placeholder="Digite aqui sua Razão Social"
-          name="name"
-          register={register}
-          error={errors.name?.message}
-        />
-        <Input
-          type="number"
-          label="CNPJ"
-          placeholder="Digite aqui seu CNPJ"
-          name="cnpj"
-          register={register}
-          error={errors.cnpj?.message}
-        />
-        <Input
-          label="Contato"
-          placeholder="Digite aqui seu telefone para contao"
-          name="phone"
-          register={register}
-          error={errors.phone?.message}
-        />
-        <Input
-          label="Endereço"
-          placeholder="Digite aqui o endereço da sua empresa"
-          name="address"
-          register={register}
-          error={errors.address?.message}
-        />
-        <SelectContent
-          label="Categoria"
-          placeholder="Escolha sua Categoria"
-          name="category"
-          error={errors.category?.message}
-          register={register}
-        >
-          <Options value="Panificadora">Panificadora</Options>
-          <Options value="Mercado">Mercado</Options>
-          <Options value="Restaurante">Restaurante</Options>
-        </SelectContent>
-        <Input
-          label="E-mail"
-          placeholder="Digite aqui seu email"
-          name="email"
-          register={register}
-          error={errors.email?.message}
-        />
-        <Input
-          label="Senha"
-          type="password"
-          placeholder="Digite aqui sua senha"
-          name="password"
-          register={register}
-          error={errors.password?.message}
-        />
-        <Input
-          label="Confirme sua senha"
-          type="password"
-          placeholder="Confirme sua senha"
-          name="confirmPassword"
-          register={register}
-          error={errors.confirmPassword?.message}
-        />
-        <button type="submit">Cadastre-se</button>
-      </Form>
+
+      <motion.div
+        initial={{scale: 0}}
+        animate={{ scale: 1}}
+        transition= {{duration: 0.5}}
+      >
+        <Button onClick={handleNavigation}>Voltar</Button>
+        <Form onSubmit={handleSubmit(onSubmitFunction)}>
+          <h1>Crie a sua conta</h1>
+          <h3>Pessoa Jurídica</h3>
+          <Input
+            label="Razão Social"
+            placeholder="Digite aqui sua Razão Social"
+            name="name"
+            register={register}
+            error={errors.name?.message}
+          />
+          <Input
+            type="number"
+            label="CNPJ"
+            placeholder="Digite aqui seu CNPJ"
+            name="cnpj"
+            register={register}
+            error={errors.cnpj?.message}
+          />
+          <Input
+            label="Contato"
+            placeholder="Digite aqui seu telefone para contao"
+            name="phone"
+            register={register}
+            error={errors.phone?.message}
+          />
+          <Input
+            label="Endereço"
+            placeholder="Digite aqui o endereço da sua empresa"
+            name="address"
+            register={register}
+            error={errors.address?.message}
+          />
+          <SelectContent
+            label="Categoria"
+            placeholder="Escolha sua Categoria"
+            name="category"
+            error={errors.category?.message}
+            register={register}
+          >
+            <Options value="Panificadora">Panificadora</Options>
+            <Options value="Mercado">Mercado</Options>
+            <Options value="Restaurante">Restaurante</Options>
+          </SelectContent>
+          <Input
+            label="E-mail"
+            placeholder="Digite aqui seu email"
+            name="email"
+            register={register}
+            error={errors.email?.message}
+          />
+          <Input
+            label="Senha"
+            type="password"
+            placeholder="Digite aqui sua senha"
+            name="password"
+            register={register}
+            error={errors.password?.message}
+          />
+          <Input
+            label="Confirme sua senha"
+            type="password"
+            placeholder="Confirme sua senha"
+            name="confirmPassword"
+            register={register}
+            error={errors.confirmPassword?.message}
+          />
+          <button type="submit">Cadastre-se</button>
+        </Form>
+      </motion.div>
     </Container>
   );
 };
