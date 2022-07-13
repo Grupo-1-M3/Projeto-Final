@@ -206,8 +206,8 @@ const RegisterPF = ({ authenticated }) => {
           </Button>
 
           <Form>
-            <h1>TrashNoFood</h1>
-            <p>Crie sua conta</p>
+            <h1>Crie sua conta</h1>
+            <h3>Usuário</h3>
 
             <Input
               label="Nome"

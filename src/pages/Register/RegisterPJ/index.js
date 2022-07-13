@@ -52,7 +52,7 @@ const RegisterPJ = ({ authenticated }) => {
       <Button onClick={handleNavigation}>Voltar</Button>
       <Form onSubmit={handleSubmit(onSubmitFunction)}>
         <h1>Crie a sua conta</h1>
-        <h3>Pessoa Jurídica</h3>
+        <h3>Parceira</h3>
         <Input
           label="Razão Social"
           placeholder="Digite aqui sua Razão Social"
