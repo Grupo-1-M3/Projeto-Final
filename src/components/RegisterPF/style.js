@@ -17,29 +17,10 @@ export const Container = styled.div`
   background-color: var(--background-footer);
   color: var(--white);
 `;
-/* 
---white: #FAFAFA;
---color-primary: #f2e8c4;
---color-primary-dark: #616668;
---color-light-green: #98d9b6;
---color-medium-green: #3ec9a7;
---color-dark-green: #2b879e;
---background-company: #F5F5F5;
---background-home: #181818;
---background-header-home: rgba(33, 33, 33, 0.98);
---color-button-home: #282528;
---color-button-home-hover: #4CBB17;
---background-footer: #000;
---color-box-shadow: rgba(0, 0, 0, 0.25);
-
---radius-inputs-buttons: 0.3rem;
---box-shadow: 0px 0px 40px -20px rgba(0, 0, 0, 0.25);
---container-size: 1200px; 
-*/
 
 export const Form = styled.div`
   width: 100%;
-  padding: 0.5rem;
+  padding: 38px 18px 24px 18px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -52,10 +33,10 @@ export const Form = styled.div`
   height: max-content;
   max-width: 300px;
 
-  border-radius: 10px;
+  border-radius: 4px;
   box-shadow: var(--box-shadow);
 
-  background: var(--color-button-home);
+  background: var(--background-header-home);
 
   input {
     padding: 0.3rem;
@@ -68,6 +49,7 @@ export const Form = styled.div`
     background-color: #262626;
     border: 1px solid var(--color-primary-dark);
     color: var(--white);
+    text-align: left;
   }
 
   button {
