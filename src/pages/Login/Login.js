@@ -13,7 +13,7 @@ import {api} from "../../services/api";
 
 import { Container, Form, ContainerMessage } from "./style";
 import Input from "../../components/Input";
-
+import { motion } from "framer-motion";
 
 const Login = () => {
 
@@ -61,6 +61,11 @@ const Login = () => {
 
   return (
     <Container>
+    <motion.div 
+    initial={{ x: -1200 }}
+        animate={{ x: 0 }}
+        transition={{ duration: 0.5 }}
+    >
       <Form onSubmit={handleSubmit(handleLogin)}>
         <h1>Login</h1>
         <Input 
@@ -84,6 +89,7 @@ const Login = () => {
         </ContainerMessage> 
         <button type="button" onClick={() => history.push('/register')}>Cadastre-se</button>
       </Form>
+    </motion.div>
     </Container>
   )
 }

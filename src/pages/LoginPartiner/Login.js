@@ -12,6 +12,7 @@ import { api } from "../../services/api";
 
 import { Container, Form, ContainerMessage } from "./style";
 import Input from "../../components/Input";
+import { motion } from "framer-motion"
 
 const LoginPartiner = () => {
   const [auth, setAuth] = useState(false);
@@ -57,31 +58,37 @@ const LoginPartiner = () => {
 
   return (
     <Container>
-      <Form onSubmit={handleSubmit(handleLogin)}>
-        <h1>Login</h1>
-        <Input
-          register={register}
-          name="email"
-          label="Email"
-          placeholder="Digite aqui seu email"
-          error={errors.email?.message}
-        />
-        <Input
-          register={register}
-          name="password"
-          label="Senha"
-          type="password"
-          placeholder="Digite aqui sua senha"
-          error={errors.password?.message}
-        />
-        <button type="submit">Entrar</button>
-        <ContainerMessage>
-          <strong>Ainda não possui uma conta parceira?</strong>
-        </ContainerMessage>
-        <button type="button" onClick={() => history.push("/registerPartiner")}>
-          Cadastre-se
-        </button>
-      </Form>
+      <motion.div 
+        initial={{ x: 1100 }}
+        animate={{ x: 0 }}
+        transition={{ duration: 0.5 }}
+      >
+        <Form onSubmit={handleSubmit(handleLogin)}>
+          <h1>Login</h1>
+          <Input
+            register={register}
+            name="email"
+            label="Email"
+            placeholder="Digite aqui seu email"
+            error={errors.email?.message}
+          />
+          <Input
+            register={register}
+            name="password"
+            label="Senha"
+            type="password"
+            placeholder="Digite aqui sua senha"
+            error={errors.password?.message}
+          />
+          <button type="submit">Entrar</button>
+          <ContainerMessage>
+            <strong>Ainda não possui uma conta parceira?</strong>
+          </ContainerMessage>
+          <button type="button" onClick={() => history.push("/registerPartiner")}>
+            Cadastre-se
+          </button>
+        </Form>
+      </motion.div>
     </Container>
   );
 };
