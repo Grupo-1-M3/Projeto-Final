@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-import styled, { createGlobalStyle } from "styled-components";
-=======
 import { createGlobalStyle } from "styled-components";
->>>>>>> b14f8f11057e4251b939b67c59d06c78e1747912
 
 export const GlobalStyle = createGlobalStyle`
 
@@ -56,7 +52,7 @@ export const GlobalStyle = createGlobalStyle`
   .swiper {
     width: 100%;
     height: 100%;
-  }rfshdahe;::-webkit-meter-even-less-good-value;L,.GR';
+  }
   .swiper-slide {
     text-align: center;
     font-size: 18px;
