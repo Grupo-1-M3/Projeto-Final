@@ -8,7 +8,8 @@ export const Container = styled.div`
   flex-wrap: wrap;
   box-sizing: border-box;
   border: red;
-  color: #fff h1 {
+  color: #fff;
+  h1 {
     text-align: center;
   }
 `;
