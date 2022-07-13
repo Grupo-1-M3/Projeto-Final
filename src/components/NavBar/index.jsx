@@ -89,7 +89,7 @@ const NavBar = () => {
               {pages.map((page) => (
                 <MenuItem
                   key={page.text}
-                  onClick={() => console.log(page.route)}
+                  onClick={() => history.push(`${page.route}`)}
                 >
                   <Typography textAlign="center" sx={{ color: "primary" }}>
                     {page.text}
@@ -116,7 +116,7 @@ const NavBar = () => {
             {pages.map((page) => (
               <Button
                 key={page.text}
-                onClick={handleCloseNavMenu}
+                onClick={() => history.push(`${page.route}`)}
                 sx={{ my: 2, color: "white", display: "block" }}
               >
                 {page.text}

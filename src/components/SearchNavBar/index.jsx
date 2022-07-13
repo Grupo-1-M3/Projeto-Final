@@ -25,7 +25,7 @@ import { useState } from "react";
 import { CartContext } from "../../contexts/Cart";
 
 const pages = [
-  { text: "Home", route: "/" },
+  { text: "Home", route: "/vitrine" },
   { text: "Quem somos", route: "about" },
   { text: "Contato", route: "contato" },
   { text: "Blog", route: "blog" },
