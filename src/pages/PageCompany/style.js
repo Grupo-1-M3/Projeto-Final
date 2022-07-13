@@ -104,6 +104,8 @@ export const HeaderStyled = styled.div`
         height: 32px;
         border-radius: 5px;
         
+        cursor: default;
+
         align-items: center;
         display: flex;
         justify-content: center;
@@ -113,6 +115,12 @@ export const HeaderStyled = styled.div`
         
         border: 1px solid var(--background-button-company);
         background: var(--background-button-company);
+
+        :hover {
+            color: var(--white);
+            border: 1px solid #04812E;
+            background: #04812E;
+        }
     }
 
     & > div > img {
@@ -155,7 +163,7 @@ export const Content = styled.div`
     &::before {
         content: "";
         width: 100%;
-        max-width: 1103px;
+        max-width: 1200px;
         height: 0.5px;
         border: 0;
         background: var(--white);
@@ -171,7 +179,7 @@ export const Content = styled.div`
 
         display: flex;
         justify-content: unset;
-        overflow: auto;
+        overflow-x: auto;
 
         &::-webkit-scrollbar {
             height: 4px;
@@ -197,12 +205,17 @@ export const Content = styled.div`
             font-size: 13px;
             margin: 10px;
 
+            width: 100%;
+            max-width: 290px;
+
             color: var(--color-primary);
 
             img {
                 height: 150px;
                 border-radius: 5px;
+                
                 width: 100%;
+                min-width: 290px;
             }
 
             & > span {
@@ -241,7 +254,10 @@ export const Content = styled.div`
 
             .product {
                 width: 100%;
-                max-width: 372px;
+
+                img {
+                    min-width: unset;
+                }
             }
         }
     }

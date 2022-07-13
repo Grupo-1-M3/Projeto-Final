@@ -16,7 +16,7 @@ const Product = ({ product }) => {
 
         <div>
           <span>R$ { newPrice.toFixed(2) }</span>
-          <span>R$ <s>{ product.price }</s></span>
+          <span>R$ <s>{ product.price.toFixed(2) }</s></span>
         </div>
       </div>
     </div>

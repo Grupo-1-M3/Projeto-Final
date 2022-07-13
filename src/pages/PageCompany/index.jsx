@@ -7,6 +7,7 @@ import logo from "../../assets/logo.png"
 import { api } from "../../services/api"
 import Product from "../../components/Product";
 import { useEffect } from "react";
+import Stars from "../../components/Stars";
 
 
 const PageCompany = () => {
@@ -21,47 +22,32 @@ const PageCompany = () => {
 
     setLoad(true)
 
-    api.get("users/2", {
+    api.get("users/3", {
       headers: {
         "Content-Type": "application/json",
-        "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InJvZHJpZ29AZ21haWwuY29tIiwiaWF0IjoxNjU3NjM5ODA1LCJleHAiOjE2NTc2NDM0MDUsInN1YiI6IjIifQ.AnoMP4Ye2xD1PRsR5ikwWk3SnCZ9b751VYDd00f-zCk"  
+        "Authorization": `Bearer ${ localStorage.getItem("toke") }`
       }
     })
     .then(res => setCompany(res.data))
     .finally(() => setLoad(false))
   
   }, [])
-  
-  const funcImage = () => {
-    
-    for(let i = 0; i < 6; i++) {
-
-      if(company.star <= i) {
-
-        <img src={ star_yellow } alt="star" />
-      } 
-      else {
-
-        <img src={ star } alt="star" />
-      }
-    }
-  }
 
   useEffect(() => {
 
     setLoad(true)
 
-    api.get("users/2?_embed=products", {
+    api.get("users/3?_embed=products", {
       headers: {
         "Content-Type": "application/json",
-        "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InJvZHJpZ29AZ21haWwuY29tIiwiaWF0IjoxNjU3NjM5ODA1LCJleHAiOjE2NTc2NDM0MDUsInN1YiI6IjIifQ.AnoMP4Ye2xD1PRsR5ikwWk3SnCZ9b751VYDd00f-zCk"  
+        "Authorization": `Bearer ${ localStorage.getItem("toke") }`
       }
     })
     .then(res => setProducts(res.data.products))
     .finally(() => setLoad(false))
 
   }, [])
-
+  
   return (
     
       <Container>
@@ -97,9 +83,7 @@ const PageCompany = () => {
           <div className="div">
             <p>{ company.star }</p>
             
-            {
-              () => funcImage()
-            }
+            <Stars contStar={ company.star } star={ star } star_yellow={ star_yellow } />
           </div>
         </div>
 
@@ -115,7 +99,7 @@ const PageCompany = () => {
 
         <div>
             {
-              products.map((product, i) => <Product key={ i } product={ product } />)
+              products.map(product => <Product key={ product.id } product={ product } />)
             }
         </div>
       </Content>
