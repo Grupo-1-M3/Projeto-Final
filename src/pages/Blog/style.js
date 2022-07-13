@@ -1,4 +1,3 @@
-import { style } from "@mui/system";
 import styled from "styled-components";
 
 export const Container = styled.div`
@@ -12,10 +11,10 @@ export const Container = styled.div`
   box-sizing: border-box;
 
   border: red;
+  color: #fff;
 
   h1 {
     text-align: center;
-    color: var(--color-medium-green);
   }
 `;
 export const Card = styled.li`
@@ -34,6 +33,7 @@ export const Card = styled.li`
   align-items: center;
   text-align: justify;
 
+  background-color: #212121;
   :hover {
     cursor: pointer;
   }
@@ -43,7 +43,7 @@ export const Card = styled.li`
   }
 
   h3 {
-    color: var(--color-medium-green);
+    color: #fff;
 
     width: 380px;
 
@@ -83,7 +83,7 @@ export const Card = styled.li`
     transition: 0.5s;
 
     :hover {
-      color: var(--color-medium-green);
+      color: #fff;
     }
 
     @media (max-width: 400px) {
@@ -100,7 +100,6 @@ export const Card = styled.li`
     width: 100%;
     height: 200px;
 
-    border-top-radius: 4px;
     overflow: hidden;
 
     max-width: 100%;
