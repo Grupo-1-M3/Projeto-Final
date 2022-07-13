@@ -33,6 +33,7 @@ export const ContainerCart = styled.div`
       margin-left: auto;
       overflow: scroll;
       height: 500px;
+      margin: 0 auto;
     }
   }
   @media (max-width: 425px) {
@@ -41,6 +42,7 @@ export const ContainerCart = styled.div`
       margin-left: 1px;
       overflow: scroll;
       height: 500px;
+      margin: 0 auto;
     }
   }
   @media (max-width: 370px) {
@@ -57,7 +59,14 @@ export const ContainerWarning = styled.section`
   width: 100%;
   margin-top: 200px;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   color: #0bda51;
+
+  button {
+    margin-top: 10px;
+    margin-left: 0px;
+    width: 159px;
+  }
 `;

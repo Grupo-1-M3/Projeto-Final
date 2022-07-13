@@ -25,13 +25,13 @@ import { useState } from "react";
 import { CartContext } from "../../contexts/Cart";
 
 const pages = [
-  { text: "Home", route: "/" },
+  { text: "Home", route: "/vitrine" },
   { text: "Quem somos", route: "about" },
   { text: "Contato", route: "contato" },
   { text: "Blog", route: "blog" },
 ];
 
-const SearchNavBar = ({ isCart = false }) => {
+const SearchNavBar = ({ isCart = false, handleSearch }) => {
   const [anchorElNav, setAnchorElNav] = useState(null);
   const history = useHistory();
   const { productsOnCart } = useContext(CartContext);
@@ -61,7 +61,7 @@ const SearchNavBar = ({ isCart = false }) => {
         WebkitBackdropFilter: "blur(5px)",
       }}
     >
-      <Container maxWidth="xl">
+      <Container maxWidth="lg">
         <Toolbar disableGutters>
           <Avatar
             alt="Logo"
@@ -193,6 +193,7 @@ const SearchNavBar = ({ isCart = false }) => {
                   }}
                   placeholder="Search…"
                   inputProps={{ "aria-label": "search" }}
+                  onChange={handleSearch}
                 />
               </Search>
             </Box>

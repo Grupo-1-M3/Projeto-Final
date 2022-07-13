@@ -1,6 +1,5 @@
 import React, { useState } from "react";
-import { HeaderStyled, Container, Content, FooterStyled } from "./style";
-import Logo from "../../assets/logo.png";
+import { Container, Content, FooterStyled } from "./style";
 
 import Principal from "../../assets/foto_principal.png";
 import Ifood from "../../assets/ifood.png";
@@ -44,15 +43,16 @@ const Home = () => {
   return (
     <>
       <NavBar />
+
       <Content>
         <div>
           <h1>#1 DO BRASIL CONTRA O DESPERDÍCIO DE ALIMENTOS.</h1>
 
           <p>
             Salve alimentos de
-            <strong> restaurantes, padarias e hortifrutis </strong>
-            com até
-            <strong> 70% de desconto</strong>, e faça parte deste movimento
+            <strong> restaurantes, panificadoras e mercados, </strong>
+            descontos
+            <strong> a partir de 50%</strong>, e faça parte deste movimento
             sustentável que combate o<strong> desperdício de alimentos.</strong>
           </p>
 

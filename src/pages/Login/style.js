@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const Container = styled.div`
   min-height: 100vh;
-
+    
   display: flex;
   align-items: center;
   flex-direction: column;
@@ -60,6 +60,7 @@ export const Form = styled.form`
 
     width: 264.66px;
     height: 38.5px;
+    text-align: left;
 
     &::placeholder {
       color: var(--white);
