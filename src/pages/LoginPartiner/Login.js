@@ -9,7 +9,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 
 import schema from "./formYup";
 import { api } from "../../services/api";
-
+import Button from "../../components/Button";
 import { Container, Form, ContainerMessage } from "./style";
 import Input from "../../components/Input";
 import { motion } from "framer-motion";
@@ -63,8 +63,9 @@ const LoginPartiner = () => {
         animate={{ x: 0 }}
         transition={{ duration: 0.5 }}
       >
+        <Button onClick={() => history.push("/")}> Voltar </Button>
         <Form onSubmit={handleSubmit(handleLogin)}>
-          <h1>Login de Parceiros</h1>
+          <h1>Login Parceiros</h1>
           <Input
             register={register}
             name="email"
