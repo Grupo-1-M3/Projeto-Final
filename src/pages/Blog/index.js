@@ -1,4 +1,3 @@
-import blog1 from "../../assets/blog1.jpg";
 import blog2 from "../../assets/blog2.webp";
 import blog3 from "../../assets/blog3.PNG";
 import blog4 from "../../assets/blog4.png";
@@ -56,13 +55,6 @@ const Blog = () => {
       description:
         "As cascas e talos de verduras, legumes e frutas podem fazer parte de receitas deliciosas e supernutritivas. Afinal, esses componentes concentram muitas fibras, vitaminas e minerais. Então, ao consumi-los, além de ter um aproveitamento integral dos vegetais, você acrescenta mais nutrientes a sua alimentação! Uma dica bacana é congelar as cascas e os talos, já higienizados, conforme vai consumindo os vegetais. Então, quando tiver uma quantidade boa desses ingredientes.",
       id: 6,
-    },
-    {
-      img: blog1,
-      title: "10 maneiras inteligentes de reaproveitar restos de alimento",
-      description:
-        "Tomate: Sabe as pontas do tomate que você tira e joga fora? Se batidas com um pouco de água e extrato de tomate você tem um belo molho. Para isso você precisa higienizar bem o tomate antes de cortar, retirar as pontas, guardar em um saquinho e congelar. Para utilizar não é necessário descongelar, somente bater no liquidificador;Arroz: As sobras de arroz podem virar um bolinho, lasanha de arroz, arroz de forno ou risoto;Feijão: Que tal fazer um delicioso Tutu? Outras opções são: Feijão Tropeiro e Sopa de Feijão.",
-      id: 7,
     },
   ];
   return (
