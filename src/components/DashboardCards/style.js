@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const Card = styled.div`
   width: 200px;
   height: 300px;
-  background-color: white;
+  background-color: var(--background-header-home);
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -44,6 +44,20 @@ export const Card = styled.div`
     background-color: #fc4444;
   }
   .editar {
-    background-color: var(--color-light-green);
+    background-color: #1aa348;
+  }
+
+  .name {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: white;
+  }
+  .category, .price {
+    font-weight: 500;
+    color: white;
+  }
+  .description, .validity {
+    font-size: .9rem;
+    color: white;
   }
 `;
