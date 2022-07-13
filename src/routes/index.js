@@ -10,6 +10,7 @@ import Register from "../pages/Register/Register";
 import LoginPartiner from "../pages/LoginPartiner/Login";
 import Contato from "../pages/Contato";
 import Blog from "../pages/Blog";
+import About from "../pages/About";
 
 const Routes = () => {
   return (
@@ -32,7 +33,7 @@ const Routes = () => {
       <Route exact path={"/vitrine"}>
         <Vitrine />
       </Route>
-      
+
       <Route exact path={"/dashboardPartiner"}>
         <DashBoardPJ />
       </Route>
@@ -43,9 +44,12 @@ const Routes = () => {
 
       <Route exact path={"/contato"}>
         <Contato />
-       </Route>
+      </Route>
       <Route exact path={"/blog"}>
         <Blog />
+      </Route>
+      <Route exact path={"/about"}>
+        <About />
       </Route>
     </Switch>
   );
