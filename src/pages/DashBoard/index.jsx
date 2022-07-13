@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import logo from "../../assets/logo_dashboard.png";
 import React, { useState, useEffect } from "react";
 import { FiXCircle } from "react-icons/fi";
@@ -187,3 +188,16 @@ const DashBoardPJ = () => {
 };
 
 export default DashBoardPJ;
+=======
+import React from "react";
+
+const DashBoard = () => {
+  return (
+    <div>
+      <h1>DashBoard page</h1>
+    </div>
+  );
+};
+
+export default DashBoard;
+>>>>>>> 1d8d36ebec5555081256e61aab7b28c9dc74f480
