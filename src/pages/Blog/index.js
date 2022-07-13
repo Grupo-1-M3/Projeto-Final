@@ -3,7 +3,7 @@ import blog3 from "../../assets/blog3.PNG";
 import blog4 from "../../assets/blog4.png";
 import blog5 from "../../assets/blog5.PNG";
 import blog6 from "../../assets/blog6.PNG";
-import blog7 from "../../assets/blog7.PNG";
+import blog7 from "../../assets/blog7.jpg";
 
 import { Card, Container, ContainerPost, Post } from "./style";
 import NavBar from "../../components/NavBar";
