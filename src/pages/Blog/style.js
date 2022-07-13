@@ -23,7 +23,7 @@ export const Card = styled.li`
   width: 100%;
   height: 350px;
 
-  border: 1px solid var(--color-light-green);
+  border: 1px solid var(--color-primary-dark);
   border-radius: 4px;
 
   box-sizing: border-box;
@@ -34,12 +34,16 @@ export const Card = styled.li`
   align-items: center;
   text-align: justify;
 
+  :hover {
+    cursor: pointer;
+  }
+
   @media (max-width: 400px) {
     max-width: 300px;
   }
 
   h3 {
-    color: white;
+    color: var(--color-medium-green);
 
     width: 380px;
 
@@ -52,6 +56,11 @@ export const Card = styled.li`
     -webkit-box-orient: vertical;
     overflow: hidden;
     text-overflow: ellipsis;
+    transition: 0.5s;
+
+    :hover {
+      text-decoration: underline;
+    }
 
     @media (max-width: 400px) {
       width: 300px;
@@ -64,24 +73,41 @@ export const Card = styled.li`
     font-size: 12px;
     line-height: 1.2rem;
 
-    color: white;
+    color: var(--color-primary-dark);
     width: 380px;
     display: -webkit-box;
     -webkit-line-clamp: 3; /** número de linhas que você quer exibir */
     -webkit-box-orient: vertical;
     overflow: hidden;
     text-overflow: ellipsis;
+    transition: 0.5s;
+
+    :hover {
+      color: var(--color-medium-green);
+    }
 
     @media (max-width: 400px) {
       width: 300px;
       padding: 0 10px;
     }
   }
+  .Image {
+    width: 400px;
+    height: 200px;
+    overflow: hidden;
+  }
   img {
     width: 100%;
     height: 200px;
 
     border-top-radius: 4px;
+    overflow: hidden;
+
+    max-width: 100%;
+    transition: transform 0.6s ease;
+  }
+  img:hover {
+    transform: scale(1.05);
   }
 `;
 
