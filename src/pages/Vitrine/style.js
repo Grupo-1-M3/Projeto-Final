@@ -2,12 +2,32 @@ import styled from "styled-components";
 
 export const Container = styled.div`
   display: flex;
-  justify-content: space-between;
+  /* justify-content: space-between; */
   flex-wrap: wrap;
-  margin-top: 42px;
-  margin-bottom: 42px;
   ::-webkit-scrollbar {
     display: none;
+  }
+
+  @media (min-width: 651px) {
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+  }
+
+  .vitrineFiltro {
+    width: 50%;
+    display: flex;
+    justify-content: space-around;
+  }
+
+  @media (max-width: 650px) {
+    height: 165px;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    .vitrineFiltro {
+      width: 80%;
+      margin-bottom: 1.5rem;
+    }
   }
 `;
 
@@ -16,19 +36,9 @@ export const ContentContainer = styled.div`
   max-width: 1300px;
   margin: 0 auto;
 
-  .vitrineHeader {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-
-    form {
-      margin-bottom: 1.5rem;
-    }
-
-    .vitrineLogo {
-      width: 100px;
-      height: 100px;
-    }
+  @media (max-width: 1316px) {
+    margin-left: 1rem;
+    margin-right: 1rem;
   }
 `
 
@@ -54,16 +64,17 @@ export const Card = styled.div`
   width: 100%;
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
   align-items: center;
-  height: 550px;
+  height: 700px;
   max-height: 800px;
   overflow: auto;
+  gap: 1rem;
 
   .vitrineCard {
-    /* background-color: var(--background-header-home); */
-    background-color: #04812E;
-    width: calc((100% - 4rem)/4);
+    background-color: var(--background-header-home);
+    color: white;
+    box-sizing: border-box;
+    width: calc((100% - 3rem)/4);
     height: 300px;
     border-radius: 4px;
     font-size: .8rem;
@@ -71,21 +82,55 @@ export const Card = styled.div`
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
-    gap: 2rem;
-    margin-bottom: 1.5rem;
+
+    @media (max-width: 1166px) {
+      width: calc((100% - 2rem)/3)
+    }
+
+    @media (max-width: 750px) {
+      width: calc((100% - 1rem)/2)
+    }
+
+    @media (max-width: 442px) {
+      width: 100%
+    }
 
     .vitrineInfos {
+      padding-left: 1rem;
+      width: 100%;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
       height: 95px;
+      text-align: left;
+
+      h2 {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+
+      span {
+        font-size: .85rem;
+      }
+
+      .vitrinePrice {
+        font-size: .95rem;
+        font-weight: 600;
+      }
     }
 
     img {
       width: 100%;
-      height: 120px;
+      height: 130px;
       border-top-right-radius: 4px;
       border-top-left-radius: 4px;
+    }
+
+    .vitrineButtonContainer {
+      width: 100%;
+      text-align: left;
+      padding-left: 1rem;
     }
 
     button {
@@ -94,8 +139,13 @@ export const Card = styled.div`
       height: 25px;
       width: 150px;
       outline: none;
-      color: white;
+      color: black;
       margin-bottom: 1rem;
+      background-color: #04812E;
+    }
+
+    button:hover {
+      color: white;
     }
   }
 `;

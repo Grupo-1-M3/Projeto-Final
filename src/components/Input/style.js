@@ -11,14 +11,14 @@ export const Container = styled.div`
 
 export const InputContainer = styled.div`
   input {
-    background: var(--color-light-green);
-    color: var(--color-primary-dark);
+    background: #262626;
+    color: var(--white);
     font-weight: 600;
     align-items: center;
     border: 1px solid var(--color-light-green);
     border-radius: 4px;
     &::placeholder {
-      color: var(--color-primary-dark);
+      color: var(--white);
       font-weight: 600;
     }
   }
