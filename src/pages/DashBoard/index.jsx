@@ -20,8 +20,8 @@ const DashBoardPJ = () => {
   const [products, setProducts] = useState([]);
 
   const history = useHistory();
-  const token = localStorage.getItem("@TrashNoFood:token");
-  const id = Number(localStorage.getItem("@TrashNoFood:id"));
+  const token = localStorage.getItem("@TrashNoFoodPartiner:token");
+  const id = Number(localStorage.getItem("@TrashNoFoodPartiner:id"));
 
   const auth = {
     headers: { Authorization: `Bearer ${token}` },
@@ -74,8 +74,8 @@ const DashBoardPJ = () => {
   };
 
   const logout = () => {
-    localStorage.removeItem("@TrashNoFood:token");
-    localStorage.removeItem("@TrashNoFood:id");
+    localStorage.removeItem("@TrashNoFoodPartiner:token");
+    localStorage.removeItem("@TrashNoFoodPartiner:id");
     history.push("/");
   };
 

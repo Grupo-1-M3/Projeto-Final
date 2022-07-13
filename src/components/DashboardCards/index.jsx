@@ -12,8 +12,8 @@ Modal.setAppElement("#root");
 
 const DashBoardCards = ({ elem, setProducts }) => {
   const [modalIsOpen2, setModalIsOpen2] = useState(false);
-  const token = localStorage.getItem("@TrashNoFood:token");
-  const id = Number(localStorage.getItem("@TrashNoFood:id"));
+  const token = localStorage.getItem("@TrashNoFoodPartiner:token");
+  const id = Number(localStorage.getItem("@TrashNoFoodPartiner:id"));
   const split = elem.validity.split("-");
   const validity = `${split[2]}/${split[1]}/${split[0]}`;
   const auth = {
