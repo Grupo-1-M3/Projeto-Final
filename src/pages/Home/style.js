@@ -218,7 +218,7 @@ export const FooterStyled = styled.footer`
   text-align: center;
   color: var(--white);
   background: var(--background-footer);
-
+  width: 100%;
   & > div {
     height: 366px;
     display: flex;
@@ -268,7 +268,19 @@ export const FooterStyled = styled.footer`
 
   @media screen and (max-width: 425px) {
     & > div {
-      height: 266px;
+      height: 366px;
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+    }
+
+    .telephone {
+      letter-spacing: 1.5px;
+    }
+
+    & > p {
+      font-size: 13px;
+      color: grey;
     }
 
     h2 {

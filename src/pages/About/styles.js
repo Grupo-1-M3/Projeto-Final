@@ -49,53 +49,22 @@ export const Image = styled.img`
 `
 
 export const BoxText = styled.div`
+    
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: flex-start;
-    
-    min-height: 300px;
-    max-width: 750px;
-    padding: 0.7rem;
+    font-size: 18px;
+
+    margin: auto;
+
+    padding: 20px;
 
     background: rgb(33, 33, 33);
-    color: #fff;
 
-    p{
-        color: #ffffef;
+    p {
+        padding-top: 20px;
+        color: var(--white);
+        line-height: 22px;
     }
-`
-export const Footer = styled.div`
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-
-    text-align: center;
-    
-    width: 100%;
-    min-height: 100px;
-    gap: 0.1rem;
-
-    background: #000;
-    color: #fff;
-
-    img{
-        object-fit: contain;
-        width: 30px;
-        cursor: pointer;
-        &:hover{
-            zoom: 105%;
-        }
-    }
-    .row{
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        gap: 1rem;
-    }
-    .copyright{
-        color: grey;
-    }
-
 `
