@@ -1,44 +1,43 @@
 import styled, { css } from "styled-components";
 
 export const Container = styled.div`
-  text-align: left;
-`;
+  /* text-align: left; */
+  `;
 export const InputContainer = styled.div`
+  margin: 0 auto;
+  margin-top: 1.5rem;
   border-radius: 30px;
   padding: 0.8rem;
   transition: 0.5s;
-  border: 1px solid var(--color-primary);
-  background: var(--color-primary);
-  width: 230px;
-  height: 50px;
-
-  :focus-within {
-    border: 1px solid white;
-  }
+  background: #05732A;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
   input {
     background: transparent;
     align-items: center;
     flex: 1;
     border: 0;
-    color: var(--color-medium-green);
-
+    color: black;
+    font-size: 1rem;
+    font-weight: 500;
     &::placeholder {
-      color: var(--color-medium-green);
-      font-weight: 600;
+      color: black;
     }
   }
 `;
 
 export const ContainerButton = styled.button`
-  background: var(--color-primary);
-  color: var(--color-medium-green);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #05732A;
+  border: none;
+  color: black;
   height: 30px;
   border-radius: 30px;
-  border: 1.5px solid var(--color-primary);
   transition: 0.5s;
   padding: 0 0.5rem;
-  :hover {
-    border: 1.5px solid var(--color-primary);
-  }
 `;

@@ -29,9 +29,10 @@ const pages = [
   { text: "Quem somos", route: "about" },
   { text: "Contato", route: "contato" },
   { text: "Blog", route: "blog" },
+  {text: "Vitrine", route: "vitrine"}
 ];
 
-const SearchNavBar = ({ isCart = false }) => {
+const SearchNavBar = ({ isCart = false, handleSearch }) => {
   const [anchorElNav, setAnchorElNav] = useState(null);
   const history = useHistory();
   const { productsOnCart } = useContext(CartContext);
@@ -193,7 +194,7 @@ const SearchNavBar = ({ isCart = false }) => {
                   }}
                   placeholder="Search…"
                   inputProps={{ "aria-label": "search" }}
-                />
+                  onChange={handleSearch}/>
               </Search>
             </Box>
           )}

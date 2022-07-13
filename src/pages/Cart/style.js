@@ -33,6 +33,7 @@ export const ContainerCart = styled.div`
       margin-left: auto;
       overflow: scroll;
       height: 500px;
+      margin: 0 auto;
     }
   }
   @media (max-width: 425px) {
@@ -41,6 +42,7 @@ export const ContainerCart = styled.div`
       margin-left: 1px;
       overflow: scroll;
       height: 500px;
+      margin: 0 auto;
     }
   }
   @media (max-width: 370px) {
