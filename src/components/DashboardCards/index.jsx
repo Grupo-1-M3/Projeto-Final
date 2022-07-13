@@ -68,7 +68,7 @@ const DashBoardCards = ({ elem, setProducts }) => {
       <img src={elem.img} alt={elem.name} />
       <span className="name">{elem.name}</span>
       <span className="category">{elem.category}</span>
-      <span className="price">{elem.price}</span>
+      <span className="price">R$ {elem.price}</span>
       <span className="description">{elem.description}</span>
       <span className="validity">{validity}</span>
       <div className="buttonContainer">
