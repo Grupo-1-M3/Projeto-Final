@@ -35,7 +35,7 @@ const LoginPartiner = () => {
   const history = useHistory();
 
   if (auth) {
-    return <Redirect to="/dashboard" />;
+    return <Redirect to="/dashboardPartiner" />;
   }
 
   const handleLogin = async (data) => {
@@ -52,7 +52,7 @@ const LoginPartiner = () => {
     toast.success("Login feito");
 
     setAuth(true);
-    history.push("/dashboard");
+    history.push("/dashboardPartiner");
   };
 
   return (

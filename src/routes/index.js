@@ -1,6 +1,6 @@
 import React from "react";
 import { Switch, Route } from "react-router-dom";
-import DashBoard from "../pages/DashBoard/DashBoard";
+import DashBoardPJ from "../pages/DashBoard/index";
 import Home from "../pages/Home";
 import Login from "../pages/Login/Login";
 import RegisterPartiner from "../pages/Register/RegisterPartiner";
@@ -26,8 +26,8 @@ const Routes = () => {
       <Route exact path={"/registerPartiner"}>
         <RegisterPartiner />
       </Route>
-      <Route exact path={"/dashboard"}>
-        <DashBoard />
+      <Route exact path={"/dashboardPartiner"}>
+        <DashBoardPJ />
       </Route>
       <Route exact path={"/cart"}>
         <Cart />
