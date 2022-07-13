@@ -29,6 +29,12 @@ export const Container = styled.div`
       margin-bottom: 1.5rem;
     }
   }
+
+  @media (max-width: 360px) {
+    .vitrineFiltro {
+      width: 100%;
+    }
+  }
 `;
 
 export const ContentContainer = styled.div`
@@ -37,8 +43,8 @@ export const ContentContainer = styled.div`
   margin: 0 auto;
 
   @media (max-width: 1316px) {
-    margin-left: 1rem;
-    margin-right: 1rem;
+    margin-left: 1.5rem;
+    padding-right: 1.5rem;
   }
 `
 
