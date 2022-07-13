@@ -8,6 +8,8 @@ import { api } from "../../services/api"
 import Product from "../../components/Product";
 import { useEffect } from "react";
 import Stars from "../../components/Stars";
+import Star from "../../assets/start.png"
+import Bolinha from "../../assets/bolinha.png"
 
 
 const PageCompany = () => {

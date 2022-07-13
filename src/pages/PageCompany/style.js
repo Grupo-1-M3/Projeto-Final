@@ -1,6 +1,7 @@
 import styled from "styled-components"
 
 
+<<<<<<< Updated upstream
 export const Container = styled.div`
 
     color: var(--white);
@@ -64,8 +65,70 @@ export const Container = styled.div`
     }
 `
 
-export const HeaderStyled = styled.div`
-    
+export const HeaderStyled = styled.header`
+
+    img {
+        width: 100%;
+        height: 280px;
+
+        border-bottom-left-radius: 5px;
+        border-bottom-right-radius: 5px;
+    }
+`
+
+export const Container = styled.div`
+
+    padding: 20px;
+
+    ::before {
+        content: "";
+        height: 0.5px;
+        width: 100%;
+        max-width: 1103px;
+
+        display: flex;
+        justify-content: center;
+
+        margin: 0 auto;
+
+        background: var(--white);
+    }
+
+    .listProduct {
+        padding: 20px;
+        display: flex;
+        justify-content: center;
+    }
+
+    .product {
+        width: 256px;
+        height: 204px;
+
+        background: red;
+
+        img {
+            width: 100%;
+            height: 112.09px;
+            border-bottom-left-radius: 5px;
+            border-bottom-right-radius: 5px;
+        }
+
+        div > p {
+            display: flex;
+            flex-direction: column;
+            font-size: 9px;
+
+            time {
+                font-size: 12px;
+            }
+
+            
+        }
+    }
+`
+
+export const Content = styled.div`
+
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -260,5 +323,88 @@ export const Content = styled.div`
                 }
             }
         }
+=======
+    padding: 28px 20px 20px 20px;
+
+    & > div {
+        padding: 15px;
+    }
+
+    div > h2 {
+        font-size: 23px;
+    }
+
+    div > .divCategoria {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+
+        padding: 5px 0 15px 0;
+        font-size: 13px;
+
+        img {
+            margin: 0 10px;
+        }
+    }
+
+    div > select {
+        width: 78px;
+        height: 32px;
+        background: var(--background-select);
+        border-radius: 5px;
+        color: var(--color-select);
+        padding: 0 3px;
+        margin-left: 5px;
+    }
+
+    div > .divAvaliacao {
+
+        display: flex;
+        align-items: center;
+        padding: 10px 0;
+
+        span {
+            font-size: 10px;
+            margin-right: 5px;
+        }
+    }
+
+    & > .div > div > img {
+        width: 79px;
+        height: 73px;
+        border-radius: 50%;
+
+        margin-bottom: 10px;
+        float: right;
+    }
+
+    & > div > button {
+        width: 194px;
+        height: 32px;
+        border-radius: 5px;
+        color: var(--color-select);
+        background: var(--background-select);
+        padding: 0 10px;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        font-size: 12.83px;
+
+        img {
+            margin: 0 5px;
+        }
+    }
+
+    & > div > span {
+        font-size: 7px;
+        float: right;
+        padding: 10px 0;
+    }
+
+    @media screen and (max-width: 425px) {
+
+>>>>>>> Stashed changes
     }
 `

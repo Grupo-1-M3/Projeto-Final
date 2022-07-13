@@ -5,6 +5,7 @@ import DashBoard from "../pages/DashBoard";
 
 import Home from "../pages/Home";
 import Login from "../pages/Login";
+
 import RegisterPartiner from "../pages/Register/RegisterPartiner";
 import Cart from "../pages/Cart/Cart";
 import Register from "../pages/Register/Register";
@@ -14,28 +15,19 @@ import PageCompany from "../pages/PageCompany";
 const Routes = () => {
   return (
     <Switch>
-      <Route exact path={"/"}>
+      <Route exact path="/">
         <Home />
       </Route>
-      <Route exact path={"/login"}>
+      <Route exact path="/login">
         <Login />
       </Route>
-      <Route exact path={"/loginPartiner"}>
-        <LoginPartiner />
-      </Route>
-      <Route exact path={"/register"}>
+      <Route exact path="/register">
         <Register />
       </Route>
-      <Route exact path={"/registerPartiner"}>
-        <RegisterPartiner />
-      </Route>
-      <Route exact path={"/dashboard"}>
+      <Route exact path="/dashboard">
         <DashBoard />
       </Route>
-      <Route exact path={"/cart"}>
-        <Cart />
-      </Route>
-      <Route exact path={"/PageCompany"}>
+      <Route path="/company">
         <PageCompany />
       </Route>
     </Switch>

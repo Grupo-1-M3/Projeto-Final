@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 import { createGlobalStyle } from "styled-components";
 
 export const GlobalStyle = createGlobalStyle`
@@ -71,3 +72,47 @@ a {
     align-items: center;
   }
 `;
+=======
+import { createGlobalStyle } from "styled-components"
+
+
+export default createGlobalStyle`
+
+  * {
+    padding: 0;
+    margin: 0;
+    border: 0;
+    box-sizing: border-box;
+  }
+
+  :root {
+    --white: #FAFAFA;
+    --background: rgba(18, 18, 20, 1);
+    --background-select: #343B41;
+    --color-select: rgba(134, 142, 150, 1);
+  }
+
+  body {
+    background: var(--background);
+    color: var(--white);
+
+    font-family: "Inter", sans-serif;
+  }
+
+  button, input {
+    font-size: 1rem;
+  }
+
+  button {
+    cursor: pointer;
+  }
+
+  input {
+    outline: none;
+  }
+
+  a {
+    text-decoration: none;
+  }
+`
+>>>>>>> Stashed changes
