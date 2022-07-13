@@ -229,6 +229,7 @@ export const FooterStyled = styled.footer`
     text-align: center;
     color: var(--white);
     background: var(--background-footer);
+    width: 100%;
 
     & > div {
         height: 366px;
@@ -243,6 +244,7 @@ export const FooterStyled = styled.footer`
     
     & > p {
         font-size: 13px;
+        color: grey;
     }
 
     h2 {

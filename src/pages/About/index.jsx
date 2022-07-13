@@ -39,22 +39,32 @@ const About = () =>{
                 </BoxText>
             </Container>
 
-            <Footer>
-                <h2>Ajude a combater o desperdício.</h2>
-                <h4>Contatos</h4>
-                <p className="telephone">+55 11 9532-4335</p>
-                <p>contato@trashnofood.com</p>
+            <FooterStyled>
+                <div>
+                    <h2>Ajude a combater o desperdício.</h2>
 
-                <h4>Nossas Redes</h4>
-                <div className="row">
-                    <img src={Instagram} alt="Instagram" />
-                    <img src={Twitter} alt="Twitter" />
-                    <img src={WhatsApp} alt="WhatsApp" />
+                    <div>
+                        <div>
+                            <h4>Contatos</h4>
+
+                            <p className="telephone">+55 11 9532-4335</p>
+                            <p>contato@trashnofood.com</p>
+
+                            <h4>Nossas Redes</h4>
+
+                            <div>
+                                <img src={Instagram} alt="Instagram" />
+                                <img src={Twitter} alt="Twitter" />
+                                <img src={WhatsApp} alt="WhatsApp" />
+                            </div>
+                        </div>
+                    </div>
                 </div>
-            <p className="copyright">© 2022 TrashNoFood - Todos os direitos reservados.</p>
-            </Footer>
+
+                <p>© 2022 TrashNoFood - Todos os direitos reservados.</p>
+            </FooterStyled>
         </Container>
     )
 }
 
-export default About;
+export default About
